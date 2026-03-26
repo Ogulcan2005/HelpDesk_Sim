@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>FAQ Chatbot</title>
+</head>
+<body>
+    <h1>FAQ Chatbot</h1>
+    <input type="text" id="question" placeholder="Stel je vraag...">
+    <button onclick="askQuestion()">Vraag</button>
+
+    <p id="answer"></p>
+
+    <script>
+    function askQuestion() {
+        let question = document.getElementById("question").value;
+        fetch(`/chatbot/?question=${question}`)
+            .then(res => res.json())
+            .then(data => {
+                document.getElementById("answer").innerText = data.answer;
+            });
+    }
+    </script>
+</body>
+</html>
