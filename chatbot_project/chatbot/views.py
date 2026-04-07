@@ -6,6 +6,9 @@ from .models import QuestionAnswer
 def home(request):
     return render(request, 'chatbot/index.html')
 
+def login(request):
+    return render(request, 'inlogpage/index.html')
+
 # Chatbot API view haalt antwoord uit database
 def chatbot_response(request):
     # Haal de vraag van de gebruiker op uit de URL
