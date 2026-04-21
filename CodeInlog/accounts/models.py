@@ -22,7 +22,12 @@ class Student(models.Model):
 
 class Teacher(models.Model):
     name = models.CharField(max_length=100)
-    class_groups = models.ManyToManyField(ClassGroup, blank=True)
+    class_group = models.OneToOneField(   # 🔥 HIER gebeurt het
+        ClassGroup,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True
+    )
 
     def __str__(self):
         return self.name

@@ -8,8 +8,9 @@ class StudentInline(admin.TabularInline):
     extra = 0
 
 
+# 🔥 FIX: GEEN .through MEER
 class TeacherInline(admin.TabularInline):
-    model = Teacher.class_groups.through
+    model = Teacher
     extra = 0
 
 
