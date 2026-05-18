@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Admin Dashboard</title>
+    <style>
+        :root {
+            --brand: #007d84;
+            --brand-dark: #00676d;
+            --bg: #eef2f6;
+            --card: #ffffff;
+            --text: #1f2933;
+            --muted: #5b6770;
+            --line: #d6dde5;
+            --success: #e9f8f0;
+            --warning: #fff7e6;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+        }
+
+        .topbar {
+            position: sticky;
+            top: 0;
+            z-index: 20;
+            background: var(--brand);
+            color: #fff;
+            padding: 14px 22px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 700;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+        }
+
+        .topbar small {
+            font-weight: 400;
+            opacity: 0.9;
+        }
+
+        .page {
+            max-width: 1120px;
+            margin: 24px auto;
+            padding: 0 16px 24px;
+        }
+
+        .intro-card {
+            background: linear-gradient(135deg, #0c8f96 0%, #006f75 100%);
+            color: #fff;
+            border-radius: 14px;
+            padding: 18px 18px;
+            margin-bottom: 16px;
+            box-shadow: 0 10px 24px rgba(0, 82, 86, 0.25);
+        }
+
+        .intro-card h1 {
+            margin: 0 0 6px;
+            font-size: 1.3rem;
+        }
+
+        .intro-card p {
+            margin: 0;
+            opacity: 0.94;
+            line-height: 1.5;
+        }
+
+        .grid {
+            display: grid;
+            gap: 16px;
+            grid-template-columns: repeat(12, minmax(0, 1fr));
+        }
+
+        .stats {
+            margin-bottom: 16px;
+        }
+
+        .stat-card {
+            grid-column: span 12;
+            background: #ffffff;
+            border: 1px solid var(--line);
+            border-radius: 12px;
+            padding: 14px;
+        }
+
+        .stat-card strong {
+            display: block;
+            font-size: 1.2rem;
+            margin-bottom: 4px;
+        }
+
+        .stat-card span {
+            color: var(--muted);
+            font-size: 0.9rem;
+        }
+
+        .card {
+            grid-column: span 12;
+            background: var(--card);
+            border: 1px solid var(--line);
+            border-radius: 12px;
+            padding: 16px;
+            box-shadow: 0 8px 18px rgba(15, 23, 42, 0.06);
+        }
+
+        .card h2 {
+            margin: 0 0 12px;
+            font-size: 1.05rem;
+        }
+
+        .card p {
+            margin: 0;
+            color: var(--muted);
+        }
+
+        @media (min-width: 900px) {
+            .col-6 {
+                grid-column: span 6;
+            }
+
+            .col-4 {
+                grid-column: span 4;
+            }
+
+            .col-8 {
+                grid-column: span 8;
+            }
+
+            .stats .stat-card {
+                grid-column: span 3;
+            }
+        }
+
+        .form-grid {
+            display: grid;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        @media (min-width: 680px) {
+            .form-grid.two {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        label {
+            display: block;
+            font-size: 0.9rem;
+            color: var(--muted);
+            margin-bottom: 6px;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 10px 11px;
+            border: 1px solid #c8d2db;
+            border-radius: 8px;
+            font-size: 0.96rem;
+            outline: none;
+            background: #fff;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            border-color: var(--brand);
+            box-shadow: 0 0 0 3px rgba(0, 125, 132, 0.15);
+        }
+
+        textarea {
+            min-height: 80px;
+            resize: vertical;
+        }
+
+        .btn-row {
+            margin-top: 10px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .btn {
+            border: none;
+            border-radius: 8px;
+            padding: 10px 14px;
+            font-weight: 700;
+            cursor: pointer;
+            font-size: 0.92rem;
+            transition: transform 0.1s ease;
+        }
+
+        .btn:hover {
+            transform: translateY(-1px);
+        }
+
+        .btn-primary {
+            background: var(--brand);
+            color: #fff;
+        }
+
+        .btn-primary:hover {
+            background: var(--brand-dark);
+        }
+
+        .btn-light {
+            background: #eef3f7;
+            color: #2d3a44;
+        }
+
+        .btn-danger {
+            background: #fdebec;
+            color: #922b36;
+        }
+
+        .table-wrap {
+            margin-top: 10px;
+            overflow-x: auto;
+            border: 1px solid var(--line);
+            border-radius: 10px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 620px;
+        }
+
+        th, td {
+            padding: 10px;
+            border-bottom: 1px solid var(--line);
+            text-align: left;
+            font-size: 0.92rem;
+        }
+
+        th {
+            background: #f8fafc;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        .tag {
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: 999px;
+            font-size: 0.78rem;
+            font-weight: 700;
+        }
+
+        .tag-success {
+            background: var(--success);
+            color: #13633d;
+        }
+
+        .tag-warn {
+            background: var(--warning);
+            color: #8f6110;
+        }
+
+        .section-title {
+            margin: 0 0 10px;
+            font-size: 0.82rem;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: #4d5c68;
+        }
+
+        .chat-log {
+            margin-top: 10px;
+            border: 1px solid var(--line);
+            border-radius: 10px;
+            background: #f8fafc;
+            padding: 12px;
+            min-height: 160px;
+            font-size: 0.92rem;
+            color: var(--muted);
+        }
+
+        .chat-log p {
+            margin: 0 0 8px;
+        }
+
+        .divider {
+            margin: 14px 0 0;
+            padding-top: 14px;
+            border-top: 1px dashed var(--line);
+        }
+    </style>
+</head>
+<body>
+    <header class="topbar">
+        <span>HelpDesk - Project admin beheer</span>
+        <small>Demo styling (niet-functioneel)</small>
+    </header>
+
+    <main class="page">
+        <section class="intro-card">
+            <h1>Project Admin Dashboard</h1>
+            <p>Centraal beheer voor docent- en studentaccounts, gebruikers, kennisbankvragen, botinstellingen, training en testvragen aan de bot — zelfde look &amp; feel als het admin/docent scherm.</p>
+        </section>
+
+        <section class="grid stats">
+            <article class="stat-card">
+                <strong>14</strong>
+                <span>Docentaccounts</span>
+            </article>
+            <article class="stat-card">
+                <strong>128</strong>
+                <span>Studentaccounts</span>
+            </article>
+            <article class="stat-card">
+                <strong>42</strong>
+                <span>Vragen in kennisbank</span>
+            </article>
+            <article class="stat-card">
+                <strong>OK</strong>
+                <span>Bot / training status</span>
+            </article>
+        </section>
+
+        <section class="grid">
+            <article class="card">
+                <p class="section-title">Docenten</p>
+                <h2>Docentaccounts toevoegen of bewerken</h2>
+                <p>Maak nieuwe docentprofielen aan of pas bestaande gegevens aan (naam, e-mail, rol).</p>
+                <div class="form-grid two">
+                    <div>
+                        <label for="docent-voornaam">Voornaam</label>
+                        <input id="docent-voornaam" type="text" placeholder="Bijv. Lisa">
+                    </div>
+                    <div>
+                        <label for="docent-achternaam">Achternaam</label>
+                        <input id="docent-achternaam" type="text" placeholder="Bijv. Vermeer">
+                    </div>
+                    <div>
+                        <label for="docent-email">E-mail</label>
+                        <input id="docent-email" type="email" placeholder="docent@voorbeeld.nl">
+                    </div>
+                    <div>
+                        <label for="docent-status">Status</label>
+                        <select id="docent-status">
+                            <option>Actief</option>
+                            <option>Inactief</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="btn-row">
+                    <button type="button" class="btn btn-primary">Docent toevoegen</button>
+                    <button type="button" class="btn btn-light">Wijzigingen opslaan</button>
+                </div>
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Docent</th>
+                                <th>E-mail</th>
+                                <th>Status</th>
+                                <th>Acties</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>M. Jansen</td>
+                                <td>m.jansen@voorbeeld.nl</td>
+                                <td><span class="tag tag-success">Actief</span></td>
+                                <td>
+                                    <button type="button" class="btn btn-light">Bewerken</button>
+                                    <button type="button" class="btn btn-danger">Verwijderen</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>P. de Wit</td>
+                                <td>p.dewit@voorbeeld.nl</td>
+                                <td><span class="tag tag-warn">Uitnodiging</span></td>
+                                <td>
+                                    <button type="button" class="btn btn-light">Bewerken</button>
+                                    <button type="button" class="btn btn-danger">Verwijderen</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </article>
+
+            <article class="card">
+                <p class="section-title">Studenten</p>
+                <h2>Studentaccounts toevoegen of bewerken</h2>
+                <p>Registreer studenten of werk hun gegevens en klas bij.</p>
+                <div class="form-grid two">
+                    <div>
+                        <label for="student-naam">Volledige naam</label>
+                        <input id="student-naam" type="text" placeholder="Bijv. A. Jansen">
+                    </div>
+                    <div>
+                        <label for="student-klas">Klas</label>
+                        <select id="student-klas">
+                            <option>Kies een klas</option>
+                            <option>2A - Software</option>
+                            <option>2B - Networking</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="student-email">E-mail (optioneel)</label>
+                        <input id="student-email" type="email" placeholder="student@voorbeeld.nl">
+                    </div>
+                    <div>
+                        <label for="student-status">Status</label>
+                        <select id="student-status">
+                            <option>Actief</option>
+                            <option>Geblokkeerd</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="btn-row">
+                    <button type="button" class="btn btn-primary">Student toevoegen</button>
+                    <button type="button" class="btn btn-light">Wijzigingen opslaan</button>
+                </div>
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Student</th>
+                                <th>Klas</th>
+                                <th>Status</th>
+                                <th>Acties</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Ali Hamid</td>
+                                <td>2A - Software</td>
+                                <td><span class="tag tag-success">Actief</span></td>
+                                <td>
+                                    <button type="button" class="btn btn-light">Bewerken</button>
+                                    <button type="button" class="btn btn-danger">Verwijderen</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Sara de Vries</td>
+                                <td>2B - Networking</td>
+                                <td><span class="tag tag-success">Actief</span></td>
+                                <td>
+                                    <button type="button" class="btn btn-light">Bewerken</button>
+                                    <button type="button" class="btn btn-danger">Verwijderen</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </article>
+
+            <article class="card">
+                <p class="section-title">Gebruikers</p>
+                <h2>Useraccountinformatie: toevoegen, wijzigen, verwijderen</h2>
+                <p>Beheer inlogaccounts (gebruikersnaam, rol, groep) en accountacties.</p>
+                <div class="form-grid two">
+                    <div>
+                        <label for="user-naam">Gebruikersnaam</label>
+                        <input id="user-naam" type="text" placeholder="Nieuwe of bestaande user">
+                    </div>
+                    <div>
+                        <label for="user-rol">Rol</label>
+                        <select id="user-rol">
+                            <option>Project admin</option>
+                            <option>Docent</option>
+                            <option>Student</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="user-email-user">E-mail</label>
+                        <input id="user-email-user" type="email" placeholder="user@voorbeeld.nl">
+                    </div>
+                    <div>
+                        <label for="user-groep">Groep</label>
+                        <select id="user-groep">
+                            <option>Standaard</option>
+                            <option>Beheerders</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="btn-row">
+                    <button type="button" class="btn btn-primary">User toevoegen</button>
+                    <button type="button" class="btn btn-light">Gegevens wijzigen</button>
+                    <button type="button" class="btn btn-light">Wachtwoord resetten</button>
+                    <button type="button" class="btn btn-danger">User verwijderen</button>
+                </div>
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>User</th>
+                                <th>Rol</th>
+                                <th>Laatste login</th>
+                                <th>Acties</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>admin01</td>
+                                <td>Project admin</td>
+                                <td>Vandaag 09:12</td>
+                                <td>
+                                    <button type="button" class="btn btn-light">Bewerken</button>
+                                    <button type="button" class="btn btn-danger">Verwijderen</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>docent_maria</td>
+                                <td>Docent</td>
+                                <td>Gisteren 16:40</td>
+                                <td>
+                                    <button type="button" class="btn btn-light">Bewerken</button>
+                                    <button type="button" class="btn btn-danger">Verwijderen</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </article>
+
+            <article class="card">
+                <p class="section-title">Kennisbank</p>
+                <h2>Vragen beheren: toevoegen, verwijderen, wijzigen</h2>
+                <p>Onderhoud de vragen en antwoorden die de bot mag gebruiken.</p>
+                <div class="form-grid two">
+                    <div>
+                        <label for="vraag-titel">Vraag / titel</label>
+                        <input id="vraag-titel" type="text" placeholder="Bijv. Hoe reset ik mijn wachtwoord?">
+                    </div>
+                    <div>
+                        <label for="vraag-categorie">Categorie</label>
+                        <select id="vraag-categorie">
+                            <option>Algemeen</option>
+                            <option>Technisch</option>
+                            <option>Account</option>
+                        </select>
+                    </div>
+                    <div style="grid-column: 1 / -1;">
+                        <label for="vraag-antwoord">Antwoordtekst</label>
+                        <textarea id="vraag-antwoord" placeholder="Het gewenste antwoord voor de kennisbank..."></textarea>
+                    </div>
+                </div>
+                <div class="btn-row">
+                    <button type="button" class="btn btn-primary">Vraag toevoegen</button>
+                    <button type="button" class="btn btn-light">Geselecteerde wijzigen</button>
+                    <button type="button" class="btn btn-danger">Vraag verwijderen</button>
+                </div>
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Vraag</th>
+                                <th>Categorie</th>
+                                <th>Acties</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Waar vind ik roosters?</td>
+                                <td>Algemeen</td>
+                                <td>
+                                    <button type="button" class="btn btn-light">Wijzigen</button>
+                                    <button type="button" class="btn btn-danger">Verwijderen</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>VPN werkt niet op thuis-wifi</td>
+                                <td>Technisch</td>
+                                <td>
+                                    <button type="button" class="btn btn-light">Wijzigen</button>
+                                    <button type="button" class="btn btn-danger">Verwijderen</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </article>
+
+            <article class="card col-6">
+                <p class="section-title">Instellingen</p>
+                <h2>Botinstellingen bewerken</h2>
+                <p>Taal, toon, limieten en integratie-opties (demovelden).</p>
+                <div class="form-grid">
+                    <div>
+                        <label for="bot-naam">Weergavenaam bot</label>
+                        <input id="bot-naam" type="text" value="HelpDesk assistent">
+                    </div>
+                    <div>
+                        <label for="bot-taal">Taal</label>
+                        <select id="bot-taal">
+                            <option>Nederlands</option>
+                            <option>Engels</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="bot-toon">Toon</label>
+                        <select id="bot-toon">
+                            <option>Formeel</option>
+                            <option>Vriendelijk</option>
+                            <option>Kort en bondig</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="bot-max">Max. antwoordlengte (tekens)</label>
+                        <input id="bot-max" type="number" min="100" max="8000" value="2000">
+                    </div>
+                    <div>
+                        <label for="bot-notities">Interne notities</label>
+                        <textarea id="bot-notities" placeholder="Optionele opmerkingen voor beheerders..."></textarea>
+                    </div>
+                </div>
+                <div class="btn-row">
+                    <button type="button" class="btn btn-primary">Instellingen opslaan</button>
+                    <button type="button" class="btn btn-light">Herstel standaard</button>
+                </div>
+            </article>
+
+            <article class="card col-6">
+                <p class="section-title">Training</p>
+                <h2>De bot trainen</h2>
+                <p>Voeg trainingsvoorbeelden toe of upload tekst; start een trainingsrun (demo).</p>
+                <div class="form-grid">
+                    <div>
+                        <label for="train-bron">Trainingsbron</label>
+                        <select id="train-bron">
+                            <option>Handmatige Q&amp;A-paren</option>
+                            <option>Document / PDF (upload later)</option>
+                            <option>Bestaande tickets</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="train-data">Trainingsdata (voorbeeld)</label>
+                        <textarea id="train-data" style="min-height: 120px;" placeholder="V: ...&#10;A: ..."></textarea>
+                    </div>
+                </div>
+                <div class="btn-row">
+                    <button type="button" class="btn btn-primary">Training starten</button>
+                    <button type="button" class="btn btn-light">Concept opslaan</button>
+                </div>
+                <p class="divider" style="margin-top: 12px; color: var(--muted); font-size: 0.9rem;">Laatste run: nog niet gestart (demo).</p>
+            </article>
+
+            <article class="card">
+                <p class="section-title">Test</p>
+                <h2>Vragen stellen aan de bot</h2>
+                <p>Stel een testvraag en bekijk hier het antwoord zodra de backend is gekoppeld.</p>
+                <div class="form-grid two">
+                    <div style="grid-column: 1 / -1;">
+                        <label for="bot-vraag">Jouw vraag</label>
+                        <textarea id="bot-vraag" placeholder="Typ hier je vraag aan de bot..."></textarea>
+                    </div>
+                </div>
+                <div class="btn-row">
+                    <button type="button" class="btn btn-primary">Verstuur naar bot</button>
+                    <button type="button" class="btn btn-light">Wis invoer</button>
+                </div>
+                <div class="chat-log" aria-live="polite">
+                    <p><strong>Bot (demo):</strong> Antwoorden verschijnen hier na koppeling met de API.</p>
+                </div>
+            </article>
+        </section>
+    </main>
+</body>
+</html>

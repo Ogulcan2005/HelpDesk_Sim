@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Docent Dashboard</title>
+    <style>
+        :root {
+            --brand: #007d84;
+            --brand-dark: #00676d;
+            --bg: #eef2f6;
+            --card: #ffffff;
+            --text: #1f2933;
+            --muted: #5b6770;
+            --line: #d6dde5;
+            --success: #e9f8f0;
+            --warning: #fff7e6;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+        }
+
+        .topbar {
+            position: sticky;
+            top: 0;
+            z-index: 20;
+            background: var(--brand);
+            color: #fff;
+            padding: 14px 22px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 700;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+        }
+
+        .topbar small {
+            font-weight: 400;
+            opacity: 0.9;
+        }
+
+        .page {
+            max-width: 1120px;
+            margin: 24px auto;
+            padding: 0 16px 24px;
+        }
+
+        .intro-card {
+            background: linear-gradient(135deg, #0c8f96 0%, #006f75 100%);
+            color: #fff;
+            border-radius: 14px;
+            padding: 18px 18px;
+            margin-bottom: 16px;
+            box-shadow: 0 10px 24px rgba(0, 82, 86, 0.25);
+        }
+
+        .intro-card h1 {
+            margin: 0 0 6px;
+            font-size: 1.3rem;
+        }
+
+        .intro-card p {
+            margin: 0;
+            opacity: 0.94;
+            line-height: 1.5;
+        }
+
+        .grid {
+            display: grid;
+            gap: 16px;
+            grid-template-columns: repeat(12, minmax(0, 1fr));
+        }
+
+        .stats {
+            margin-bottom: 16px;
+        }
+
+        .stat-card {
+            grid-column: span 12;
+            background: #ffffff;
+            border: 1px solid var(--line);
+            border-radius: 12px;
+            padding: 14px;
+        }
+
+        .stat-card strong {
+            display: block;
+            font-size: 1.2rem;
+            margin-bottom: 4px;
+        }
+
+        .stat-card span {
+            color: var(--muted);
+            font-size: 0.9rem;
+        }
+
+        .card {
+            grid-column: span 12;
+            background: var(--card);
+            border: 1px solid var(--line);
+            border-radius: 12px;
+            padding: 16px;
+            box-shadow: 0 8px 18px rgba(15, 23, 42, 0.06);
+        }
+
+        .card h2 {
+            margin: 0 0 12px;
+            font-size: 1.05rem;
+        }
+
+        .card p {
+            margin: 0;
+            color: var(--muted);
+        }
+
+        @media (min-width: 900px) {
+            .col-6 {
+                grid-column: span 6;
+            }
+
+            .col-4 {
+                grid-column: span 4;
+            }
+
+            .col-8 {
+                grid-column: span 8;
+            }
+
+            .stats .stat-card {
+                grid-column: span 3;
+            }
+        }
+
+        .form-grid {
+            display: grid;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        @media (min-width: 680px) {
+            .form-grid.two {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        label {
+            display: block;
+            font-size: 0.9rem;
+            color: var(--muted);
+            margin-bottom: 6px;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 10px 11px;
+            border: 1px solid #c8d2db;
+            border-radius: 8px;
+            font-size: 0.96rem;
+            outline: none;
+            background: #fff;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            border-color: var(--brand);
+            box-shadow: 0 0 0 3px rgba(0, 125, 132, 0.15);
+        }
+
+        textarea {
+            min-height: 80px;
+            resize: vertical;
+        }
+
+        .btn-row {
+            margin-top: 10px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .btn {
+            border: none;
+            border-radius: 8px;
+            padding: 10px 14px;
+            font-weight: 700;
+            cursor: pointer;
+            font-size: 0.92rem;
+            transition: transform 0.1s ease;
+        }
+
+        .btn:hover {
+            transform: translateY(-1px);
+        }
+
+        .btn-primary {
+            background: var(--brand);
+            color: #fff;
+        }
+
+        .btn-primary:hover {
+            background: var(--brand-dark);
+        }
+
+        .btn-light {
+            background: #eef3f7;
+            color: #2d3a44;
+        }
+
+        .btn-danger {
+            background: #fdebec;
+            color: #922b36;
+        }
+
+        .table-wrap {
+            margin-top: 10px;
+            overflow-x: auto;
+            border: 1px solid var(--line);
+            border-radius: 10px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 620px;
+        }
+
+        th, td {
+            padding: 10px;
+            border-bottom: 1px solid var(--line);
+            text-align: left;
+            font-size: 0.92rem;
+        }
+
+        th {
+            background: #f8fafc;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        .tag {
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: 999px;
+            font-size: 0.78rem;
+            font-weight: 700;
+        }
+
+        .tag-success {
+            background: var(--success);
+            color: #13633d;
+        }
+
+        .tag-warn {
+            background: var(--warning);
+            color: #8f6110;
+        }
+
+        .section-title {
+            margin: 0 0 10px;
+            font-size: 0.82rem;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: #4d5c68;
+        }
+    </style>
+</head>
+<body>
+    <header class="topbar">
+        <span>HelpDesk - Admin/Docent beheer</span>
+        <small>Demo styling (niet-functioneel)</small>
+    </header>
+
+    <main class="page">
+        <section class="intro-card">
+            <h1>Admin Docent Dashboard</h1>
+            <p>Overzichtelijke demo-interface voor het beheren van studenten, docenten, klassen, users en rechten via een Django admin-stijl scherm.</p>
+        </section>
+
+        <section class="grid stats">
+            <article class="stat-card">
+                <strong>128</strong>
+                <span>Studenten in systeem</span>
+            </article>
+            <article class="stat-card">
+                <strong>14</strong>
+                <span>Actieve docenten</span>
+            </article>
+            <article class="stat-card">
+                <strong>9</strong>
+                <span>Klassen beschikbaar</span>
+            </article>
+            <article class="stat-card">
+                <strong>5</strong>
+                <span>Admin users</span>
+            </article>
+        </section>
+
+        <section class="grid">
+            <article class="card">
+                <p class="section-title">Beheer</p>
+                <h2>Studenten en klassen beheren</h2>
+                <div class="form-grid two">
+                    <div>
+                        <label for="student-naam">Naam student</label>
+                        <input id="student-naam" type="text" placeholder="Bijv. A. Jansen">
+                    </div>
+                    <div>
+                        <label for="student-klas">Klas</label>
+                        <select id="student-klas">
+                            <option>Kies een klas</option>
+                            <option>2A - Software</option>
+                            <option>2B - Networking</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="btn-row">
+                    <button class="btn btn-primary">Student toevoegen</button>
+                    <button class="btn btn-light">Naar andere klas verplaatsen</button>
+                </div>
+
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Student</th>
+                                <th>Klas</th>
+                                <th>Status</th>
+                                <th>Acties</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Ali Hamid</td>
+                                <td>2A - Software</td>
+                                <td><span class="tag tag-success">Actief</span></td>
+                                <td>
+                                    <button class="btn btn-light">Bewerken</button>
+                                    <button class="btn btn-danger">Verwijderen</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Sara de Vries</td>
+                                <td>2B - Networking</td>
+                                <td><span class="tag tag-warn">Wacht op klas</span></td>
+                                <td>
+                                    <button class="btn btn-light">Bewerken</button>
+                                    <button class="btn btn-danger">Verwijderen</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </article>
+
+            <article class="card col-6">
+                <p class="section-title">Koppelingen</p>
+                <h2>Docenten koppelen aan meerdere klassen</h2>
+                <div class="form-grid">
+                    <div>
+                        <label for="docent-naam">Naam docent</label>
+                        <input id="docent-naam" type="text" placeholder="Bijv. Mevr. Peters">
+                    </div>
+                    <div>
+                        <label for="docent-klassen">Klassen</label>
+                        <select id="docent-klassen">
+                            <option>2A - Software</option>
+                            <option>2B - Networking</option>
+                            <option>3A - AI</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="btn-row">
+                    <button class="btn btn-primary">Koppeling opslaan</button>
+                    <button class="btn btn-light">Koppeling aanpassen</button>
+                </div>
+            </article>
+
+            <article class="card col-6">
+                <p class="section-title">Autorisatie</p>
+                <h2>Users, groepen en rechten</h2>
+                <div class="form-grid">
+                    <div>
+                        <label for="new-user">Nieuwe user</label>
+                        <input id="new-user" type="text" placeholder="Nieuwe gebruikersnaam">
+                    </div>
+                    <div>
+                        <label for="group">Groep</label>
+                        <select id="group">
+                            <option>Docent</option>
+                            <option>Read-only</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="permissions">Rechten (beschrijving)</label>
+                        <textarea id="permissions" placeholder="Bijv. mag studenten beheren, mag users resetten"></textarea>
+                    </div>
+                </div>
+                <div class="btn-row">
+                    <button class="btn btn-primary">User aanmaken</button>
+                    <button class="btn btn-light">Wachtwoord resetten</button>
+                    <button class="btn btn-danger">User verwijderen</button>
+                </div>
+            </article>
+        </section>
+    </main>
+</body>
+</html>
