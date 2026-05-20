@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>FAQ Chatbot</title>
+    <title>Chatbot</title>
     <style>
         :root {
             --brand: #007d84;
@@ -56,9 +56,19 @@
             padding: 26px 24px;
         }
 
-        h1 {
-            margin: 0 0 18px;
-            font-size: 2rem;
+        .header-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            margin-bottom: 10px;
+        }
+
+
+
+        .subtext {
+            margin: 8px 0 18px;
+            color: var(--muted);
         }
 
         .input-row {
@@ -97,6 +107,17 @@
             background: var(--brand-dark);
         }
 
+        .btn-secondary {
+            display: inline-block;
+            background: #ebf4f5;
+            color: #144649;
+            text-decoration: none;
+            border-radius: 8px;
+            padding: 10px 12px;
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+
         #answer {
             margin: 0;
             min-height: 54px;
@@ -115,7 +136,10 @@
     </div>
     <div class="page-content">
         <main class="chat-card">
-            <h1>Chatbot voor de helpdesk</h1>
+            <div class="header-row">
+                <h1>Chatbot voor de helpdesk</h1>
+            </div>
+            <p class="subtext">Stel een vraag aan de chatbot of bekijk de gestylede admin/docent interface.</p>
             <div class="input-row">
                 <input type="text" id="question" placeholder="Stel je vraag...">
                 <button onclick="askQuestion()">Vraag</button>
