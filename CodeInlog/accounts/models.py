@@ -1,4 +1,6 @@
+from django.conf import settings
 from django.db import models
+
 
 class ClassGroup(models.Model):
     name = models.CharField(max_length=50)
@@ -8,6 +10,13 @@ class ClassGroup(models.Model):
 
 
 class Student(models.Model):
+    user = models.OneToOneField(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True,
+        related_name='student_profile',
+    )
     name = models.CharField(max_length=100)
     class_group = models.ForeignKey(
         ClassGroup,
@@ -21,6 +30,13 @@ class Student(models.Model):
 
 
 class Teacher(models.Model):
+    user = models.OneToOneField(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True,
+        related_name='teacher_profile',
+    )
     name = models.CharField(max_length=100)
     class_group = models.OneToOneField(
         ClassGroup,

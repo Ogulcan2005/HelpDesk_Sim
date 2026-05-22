@@ -1,5 +1,6 @@
 from django.contrib import admin
 from django.contrib.auth.models import Group
+from .forms import UserAccountFormMixin
 from .models import ClassGroup, Student, Teacher
 
 
@@ -8,8 +9,21 @@ def remove_from_class(modeladmin, request, queryset):
     queryset.update(class_group=None)
 
 
+class StudentAdminForm(UserAccountFormMixin):
+    class Meta:
+        model = Student
+        fields = ('name', 'class_group', 'email', 'password')
+
+
+class TeacherAdminForm(UserAccountFormMixin):
+    class Meta:
+        model = Teacher
+        fields = ('name', 'class_group', 'email', 'password')
+
+
 class StudentInline(admin.TabularInline):
     model = Student
+    form = StudentAdminForm
     extra = 0
     can_delete = True
     verbose_name_plural = 'Studenten in deze klas'
@@ -17,6 +31,7 @@ class StudentInline(admin.TabularInline):
 
 class TeacherInline(admin.TabularInline):
     model = Teacher
+    form = TeacherAdminForm
     extra = 0
     can_delete = True
     verbose_name_plural = 'Docenten in deze klas'
@@ -42,16 +57,26 @@ class ClassGroupAdmin(admin.ModelAdmin):
 
 @admin.register(Student)
 class StudentAdmin(admin.ModelAdmin):
-    list_display = ('name', 'class_group')
+    form = StudentAdminForm
+    list_display = ('name', 'email', 'class_group')
     list_filter = ('class_group',)
     actions = [remove_from_class]
+
+    @admin.display(description='E-mail')
+    def email(self, obj):
+        return obj.user.email if obj.user_id else '—'
 
 
 @admin.register(Teacher)
 class TeacherAdmin(admin.ModelAdmin):
-    list_display = ('name', 'class_group')
+    form = TeacherAdminForm
+    list_display = ('name', 'email', 'class_group')
     list_filter = ('class_group',)
     actions = [remove_from_class]
+
+    @admin.display(description='E-mail')
+    def email(self, obj):
+        return obj.user.email if obj.user_id else '—'
 
 
 admin.site.register(ClassGroup, ClassGroupAdmin)
