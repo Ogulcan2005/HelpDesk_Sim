@@ -3,7 +3,8 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.admin.views.decorators import staff_member_required
-from .models import ClassGroup
+from django.contrib import messages
+from .models import ClassGroup, Student, Teacher
 
 
 def user_login(request):
@@ -16,6 +17,7 @@ def user_login(request):
 
         if user is not None:
             login(request, user)
+            messages.success(request, 'Je bent succesvol ingelogd!')
             return redirect('home')
 
         else:
@@ -56,11 +58,20 @@ def register(request):
     return render(request, 'accounts/register.html')
 
 
+def _get_user_role(user):
+    if user.is_staff:
+        return 'Administrator'
+    if Student.objects.filter(user=user).exists():
+        return 'Leerling'
+    if Teacher.objects.filter(user=user).exists():
+        return 'Docent'
+    return 'Gebruiker'
+
+
 @login_required
 def home(request):
-    groups = ClassGroup.objects.all()
-    return render(request, 'accounts/class_list.html', {
-        'groups': groups
+    return render(request, 'accounts/home.html', {
+        'role': _get_user_role(request.user),
     })
 
 

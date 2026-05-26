@@ -1,17 +1,27 @@
-<h1>Home</h1>
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <title>Home - CodeInlog</title>
+</head>
+<body>
 
-{% if user.is_authenticated %}
-    <p>Welcome {{ user.username }}</p>
+<h1>Welkom bij CodeInlog</h1>
 
-    {% if user.is_staff %}
-        <p>You are an ADMIN</p>
-    {% else %}
-        <p>You are a NORMAL USER</p>
-    {% endif %}
-
-    <p><a href="{% url 'home' %}">Klassen bekijken</a></p>
-    <a href="{% url 'logout' %}">Logout</a>
-
-{% else %}
-    <a href="{% url 'login' %}">Login</a>
+{% if messages %}
+    {% for message in messages %}
+        <p style="color: green;"><strong>{{ message }}</strong></p>
+    {% endfor %}
 {% endif %}
+
+<p>Je bent ingelogd als <strong>{{ user.username }}</strong>.</p>
+<p>Rol: <strong>{{ role }}</strong></p>
+
+{% if user.is_staff %}
+    <p><a href="/admin/">Naar admin panel</a></p>
+{% endif %}
+
+<p><a href="{% url 'logout' %}">Uitloggen</a></p>
+
+</body>
+</html>

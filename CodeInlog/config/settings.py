@@ -117,5 +117,8 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
+LOGIN_URL = '/login/'
+LOGIN_REDIRECT_URL = '/'
+
 # 🔥 PRINT EMAIL IN TERMINAL (no real email needed)
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
