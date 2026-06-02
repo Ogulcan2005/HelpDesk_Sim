@@ -4,6 +4,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.admin.views.decorators import staff_member_required
 from django.contrib import messages
+from django.db import transaction
 from .models import ClassGroup, Student, Teacher
 
 
@@ -31,7 +32,7 @@ def user_login(request):
 def register(request):
     if request.method == 'POST':
 
-        email = request.POST.get('email')
+        email = request.POST.get('email', '').strip().lower()
         password = request.POST.get('password')
         password2 = request.POST.get('password2')
 
@@ -45,11 +46,16 @@ def register(request):
                 'message': 'Account already exists'
             })
 
-        User.objects.create_user(
-            username=email,
-            email=email,
-            password=password
-        )
+        with transaction.atomic():
+            user = User.objects.create_user(
+                username=email,
+                email=email,
+                password=password,
+            )
+            Student.objects.create(
+                user=user,
+                name=email.split('@')[0] or email,
+            )
 
         return render(request, 'accounts/register.html', {
             'message': 'Account created!'
