@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <title>Helpdesk training</title>
+    </head>
+
+    <body>
+
+        <h2>AI chat</h2>
+
+        <div id="chatbox"></div>
+
+        <input type="text" id="input" placeholder="Typ je bericht" />
+
+        <button onclick="sendMessage()">Send</button>
+
+        <script>
+            async function sendMessage() {
+
+                const input = document.getElementById("input");
+                const message = input.value;
+
+                if (!message) return;
+
+                document.getElementById("chatbox").innerHTML +=
+                    "<p><b>Jij:</b> " + message + "</p>";
+
+                input.value = "";
+
+                const response = await fetch("/api/chat/", { 
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({ message })
+                });
+
+                const data = await response.json();
+
+                document.getElementById("chatbox").innerHTML +=
+                    "<p><b>AI:</b> " + (data.reply || data.error) + "</p>";
+            }
+        </script>
+
+    </body>
+
+</html>
