@@ -31,7 +31,6 @@ def chat_api(request):
 
         reply = generate_ai_response(history, message)
 
-        # Save session properly
         request.session["history"] = history
         request.session.save()
 
@@ -42,3 +41,4 @@ def chat_api(request):
 
     except Exception as e:
         return JsonResponse({"error": str(e)}, status=500)
+#change to count as commit while waiting on group members too deliver code to work with
