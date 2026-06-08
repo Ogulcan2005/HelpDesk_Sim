@@ -6,6 +6,7 @@ from django.contrib.admin.views.decorators import staff_member_required
 from django.contrib import messages
 from django.db import transaction
 from .models import ClassGroup, Student, Teacher
+from .role_utils import ROLE_STUDENT, ROLE_TEACHER, profile_role_for_user
 
 
 def user_login(request):
@@ -67,9 +68,10 @@ def register(request):
 def _get_user_role(user):
     if user.is_staff:
         return 'Administrator'
-    if Student.objects.filter(user=user).exists():
+    role = profile_role_for_user(user)
+    if role == ROLE_STUDENT:
         return 'Leerling'
-    if Teacher.objects.filter(user=user).exists():
+    if role == ROLE_TEACHER:
         return 'Docent'
     return 'Gebruiker'
 
