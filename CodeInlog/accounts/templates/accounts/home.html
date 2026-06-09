@@ -1,9 +1,14 @@
 <!DOCTYPE html>
+
 <html lang="nl">
+
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>HelpDesk</title>
+
     <style>
         :root {
             --brand: #007d84;
@@ -157,14 +162,21 @@
             line-height: 1.45;
         }
     </style>
+
 </head>
+
+
+
 <body>
+
     <div class="topbar">
         <span>HelpDesk</span>
     </div>
 
     <div class="page-content">
+
         <section class="hero">
+
             {% if messages %}
                 {% for message in messages %}
                     <div class="notice">{{ message }}</div>
@@ -172,7 +184,9 @@
             {% endif %}
 
             {% if user.is_authenticated %}
+
                 <h1>Welkom terug</h1>
+
                 <p class="subtitle">
                     Je bent succesvol ingelogd en kunt nu verder in HelpDesk.
                 </p>
@@ -186,6 +200,7 @@
                     {% endif %}
                     <a class="btn-primary" href="{% url 'logout' %}">Uitloggen</a>
                 </div>
+
             {% else %}
                 <h1>Welkom bij HelpDesk</h1>
                 <p class="subtitle">
@@ -197,22 +212,30 @@
                     <a class="btn-secondary" href="{% url 'register' %}">Account maken</a>
                 </div>
             {% endif %}
+
         </section>
 
         <section class="features">
+
             <article class="feature-card">
                 <h2>Snel antwoord</h2>
                 <p>Stel je vraag en krijg direct hulp van de chatbot, zonder lang te wachten.</p>
             </article>
+
             <article class="feature-card">
                 <h2>24/7 beschikbaar</h2>
                 <p>De helpdesk is altijd bereikbaar wanneer je hulp nodig hebt.</p>
             </article>
+
             <article class="feature-card">
                 <h2>Eenvoudig inloggen</h2>
                 <p>Met je account heb je toegang tot alle functies van de helpdesk.</p>
             </article>
+
         </section>
+
     </div>
+
 </body>
+
 </html>

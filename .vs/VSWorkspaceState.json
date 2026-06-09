@@ -1,7 +1,11 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\CodeInlog",
+    "\\CodeInlog\\accounts",
+    "\\CodeInlog\\accounts\\templates",
+    "\\CodeInlog\\accounts\\templates\\accounts"
   ],
-  "SelectedNode": "\\CodeInlog",
+  "SelectedNode": "\\CodeInlog\\accounts\\models.py",
   "PreviewInSolutionExplorer": false
 }

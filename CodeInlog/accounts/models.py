@@ -24,7 +24,7 @@ class Student(models.Model):
         null=True,
         blank=True
     )
-
+    #waiting on code comments
     def __str__(self):
         return self.name
 
