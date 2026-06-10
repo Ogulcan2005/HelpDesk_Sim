@@ -22,23 +22,17 @@ class UserAccountFormMixin(forms.ModelForm):
         widget=forms.PasswordInput(render_value=False),
         required=False,
     )
-    role = forms.ChoiceField(
-        choices=ROLE_CHOICES,
-        label='Rol',
-        required=True,
-    )
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        if not self.show_role:
-            self.fields.pop('role', None)
-        elif self.instance.pk:
-            if isinstance(self.instance, Student):
-                self.fields['role'].initial = ROLE_STUDENT
-            elif isinstance(self.instance, Teacher):
-                self.fields['role'].initial = ROLE_TEACHER
-        else:
-            self.fields['role'].initial = self.default_role
+        if 'role' in self.fields:
+            if self.instance.pk:
+                if isinstance(self.instance, Student):
+                    self.fields['role'].initial = ROLE_STUDENT
+                elif isinstance(self.instance, Teacher):
+                    self.fields['role'].initial = ROLE_TEACHER
+            else:
+                self.fields['role'].initial = self.default_role
 
         if self.instance.pk and getattr(self.instance, 'user_id', None):
             self.fields['email'].initial = self.instance.user.email
@@ -144,6 +138,7 @@ class UserAccountFormMixin(forms.ModelForm):
 
 class StudentAdminForm(UserAccountFormMixin):
     default_role = ROLE_STUDENT
+    role = forms.ChoiceField(choices=ROLE_CHOICES, label='Rol', required=True)
 
     class Meta:
         model = Student
@@ -152,6 +147,7 @@ class StudentAdminForm(UserAccountFormMixin):
 
 class TeacherAdminForm(UserAccountFormMixin):
     default_role = ROLE_TEACHER
+    role = forms.ChoiceField(choices=ROLE_CHOICES, label='Rol', required=True)
 
     class Meta:
         model = Teacher
