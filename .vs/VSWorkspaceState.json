@@ -1,11 +1,18 @@
 {
   "ExpandedNodes": [
     "",
+    "\\chatbot_project",
+    "\\chatbot_project\\chatbot",
+    "\\chatbot_project\\chatbot\\templates",
+    "\\chatbot_project\\chatbot\\templates\\chatbot",
+    "\\chatbot_project\\config",
     "\\CodeInlog",
     "\\CodeInlog\\accounts",
     "\\CodeInlog\\accounts\\templates",
-    "\\CodeInlog\\accounts\\templates\\accounts"
+    "\\CodeInlog\\accounts\\templates\\accounts",
+    "\\CodeInlog\\config",
+    "\\env_site"
   ],
-  "SelectedNode": "\\CodeInlog\\accounts\\models.py",
+  "SelectedNode": "\\CodeInlog\\config",
   "PreviewInSolutionExplorer": false
 }
