@@ -102,7 +102,6 @@ def user_logout(request):
     return redirect('login')
 
 
-# ✅ NIEUW: admin-only view
 @staff_member_required
 def admin_only(request):
     return render(request, 'accounts/admin_only.html')
