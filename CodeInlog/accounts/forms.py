@@ -168,3 +168,35 @@ class TeacherInlineForm(UserAccountFormMixin):
     class Meta:
         model = Teacher
         fields = ('name', 'email', 'password')
+
+
+class TeacherAddStudentForm(forms.Form):
+    name = forms.CharField(label='Naam', max_length=100)
+    email = forms.EmailField(label='E-mail')
+    password = forms.CharField(
+        label='Wachtwoord',
+        widget=forms.PasswordInput(render_value=False),
+    )
+
+    def clean_email(self):
+        email = self.cleaned_data['email'].strip().lower()
+        if User.objects.filter(username=email).exists():
+            raise forms.ValidationError('Er bestaat al een account met dit e-mailadres.')
+        return email
+
+    def save(self, class_group):
+        email = self.cleaned_data['email']
+        password = self.cleaned_data['password']
+        name = self.cleaned_data['name']
+
+        user = User.objects.create_user(
+            username=email,
+            email=email,
+            password=password,
+            first_name=name,
+        )
+        return Student.objects.create(
+            user=user,
+            name=name,
+            class_group=class_group,
+        )
