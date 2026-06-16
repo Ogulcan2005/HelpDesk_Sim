@@ -156,6 +156,20 @@
             font-size: 0.92rem;
             line-height: 1.45;
         }
+
+        .teacher-section {
+            margin: 0 0 24px;
+            padding: 20px;
+            border-radius: 12px;
+            background: #f7fbfc;
+            text-align: left;
+        }
+
+        .teacher-section h2 {
+            margin: 0 0 8px;
+            font-size: 1.2rem;
+            color: var(--brand);
+        }
     </style>
 </head>
 <body>
@@ -179,6 +193,20 @@
                 <p class="meta">
                     Ingelogd als <strong>{{ user.username }}</strong>{% if role %} • Rol: <strong>{{ role }}</strong>{% endif %}
                 </p>
+
+                {% if role == "Docent" %}
+                    <section class="teacher-section">
+                        <h2>Mijn klas</h2>
+                        {% if teacher_class %}
+                            <p class="meta">Je bent docent van <strong>{{ teacher_class.name }}</strong>.</p>
+                            <div class="cta-group">
+                                <a class="btn-primary" href="{% url 'class_detail' teacher_class.pk %}">Bekijk studenten</a>
+                            </div>
+                        {% else %}
+                            <p class="meta">Je bent nog niet aan een klas gekoppeld. Neem contact op met een administrator.</p>
+                        {% endif %}
+                    </section>
+                {% endif %}
 
                 <div class="cta-group">
                     {% if user.is_staff %}
