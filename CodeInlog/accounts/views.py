@@ -1,10 +1,12 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.admin.views.decorators import staff_member_required
 from django.contrib import messages
+from django.core.exceptions import PermissionDenied
 from django.db import transaction
+from .forms import TeacherAddStudentForm
 from .models import ClassGroup, Student, Teacher
 from .role_utils import ROLE_STUDENT, ROLE_TEACHER, profile_role_for_user
 
@@ -76,24 +78,52 @@ def _get_user_role(user):
     return 'Gebruiker'
 
 
+def _get_teacher_profile(user):
+    return Teacher.objects.filter(user=user).select_related('class_group').first()
+
+
+def _user_can_access_class(user, class_group):
+    if user.is_staff:
+        return True
+    teacher = _get_teacher_profile(user)
+    return teacher is not None and teacher.class_group_id == class_group.pk
+
+
 @login_required
 def home(request):
+    teacher = _get_teacher_profile(request.user)
     return render(request, 'accounts/home.html', {
         'role': _get_user_role(request.user),
+        'teacher': teacher,
+        'teacher_class': teacher.class_group if teacher else None,
     })
 
 
 @login_required
 def class_detail(request, pk):
-    group = ClassGroup.objects.get(pk=pk)
+    group = get_object_or_404(ClassGroup, pk=pk)
 
-    students = group.student_set.all()
-    teachers = group.teacher_set.all()
+    if not _user_can_access_class(request.user, group):
+        raise PermissionDenied
+
+    students = group.student_set.select_related('user').order_by('name')
+    teacher = getattr(group, 'teacher', None)
+    add_form = TeacherAddStudentForm()
+
+    if request.method == 'POST':
+        add_form = TeacherAddStudentForm(request.POST)
+        if add_form.is_valid():
+            with transaction.atomic():
+                add_form.save(class_group=group)
+            messages.success(request, f'{add_form.cleaned_data["name"]} is toegevoegd aan {group.name}.')
+            return redirect('class_detail', pk=group.pk)
 
     return render(request, 'accounts/class_detail.html', {
         'group': group,
         'students': students,
-        'teachers': teachers
+        'teacher': teacher,
+        'add_form': add_form,
+        'can_add_students': _get_teacher_profile(request.user) is not None or request.user.is_staff,
     })
 
 
