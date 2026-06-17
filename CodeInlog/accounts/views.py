@@ -32,39 +32,70 @@ def user_login(request):
     return render(request, 'accounts/login.html')
 
 
+def _register_context(**extra):
+    return {
+        'class_groups': ClassGroup.objects.order_by('name'),
+        **extra,
+    }
+
+
 def register(request):
     if request.method == 'POST':
-
+        name = request.POST.get('name', '').strip()
         email = request.POST.get('email', '').strip().lower()
         password = request.POST.get('password')
         password2 = request.POST.get('password2')
+        class_group_id = request.POST.get('class_group')
+
+        form_data = {
+            'name': name,
+            'email': email,
+            'selected_class_group': class_group_id,
+        }
+
+        if not name:
+            return render(request, 'accounts/register.html', _register_context(
+                message='Gebruikersnaam is verplicht',
+                **form_data,
+            ))
 
         if password != password2:
-            return render(request, 'accounts/register.html', {
-                'message': 'Passwords do not match'
-            })
+            return render(request, 'accounts/register.html', _register_context(
+                message='Passwords do not match',
+                **form_data,
+            ))
 
         if User.objects.filter(username=email).exists():
-            return render(request, 'accounts/register.html', {
-                'message': 'Account already exists'
-            })
+            return render(request, 'accounts/register.html', _register_context(
+                message='Account already exists',
+                **form_data,
+            ))
+
+        class_group = ClassGroup.objects.filter(pk=class_group_id).first()
+        if class_group is None:
+            return render(request, 'accounts/register.html', _register_context(
+                message='Kies een geldige klas',
+                **form_data,
+            ))
 
         with transaction.atomic():
             user = User.objects.create_user(
                 username=email,
                 email=email,
                 password=password,
+                first_name=name,
             )
             Student.objects.create(
                 user=user,
-                name=email.split('@')[0] or email,
+                name=name,
+                class_group=class_group,
             )
 
-        return render(request, 'accounts/register.html', {
-            'message': 'Account created!'
-        })
+        return render(request, 'accounts/register.html', _register_context(
+            message='Account created!',
+        ))
 
-    return render(request, 'accounts/register.html')
+    return render(request, 'accounts/register.html', _register_context())
 
 
 def _get_user_role(user):

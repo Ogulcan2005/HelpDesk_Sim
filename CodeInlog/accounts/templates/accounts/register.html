@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Create Account</title>
+    <title>Create Student Account</title>
 </head>
 <body>
 
-<h2>Create Account</h2>
+<h2>Create Student Account</h2>
 
 <!-- SHOW error or success -->
 {% if message %}
@@ -15,9 +15,13 @@
 <form method="POST">
     {% csrf_token %}
 
+    <!-- GEBRUIKERSNAAM -->
+    <label>Gebruikersnaam:</label><br>
+    <input type="text" name="name" value="{{ name|default:'' }}" maxlength="100" required><br><br>
+
     <!-- EMAIL -->
     <label>Email:</label><br>
-    <input type="email" name="email" required><br><br>
+    <input type="email" name="email" value="{{ email|default:'' }}" required><br><br>
 
     <!-- PASSWORD -->
     <label>Password:</label><br>
@@ -26,6 +30,17 @@
     <!-- CONFIRM PASSWORD -->
     <label>Confirm Password:</label><br>
     <input type="password" name="password2" required><br><br>
+
+    <!-- KLAS -->
+    <label>Klas:</label><br>
+    <select name="class_group" required>
+        <option value="" disabled {% if not selected_class_group %}selected{% endif %}>Kies een klas</option>
+        {% for class_group in class_groups %}
+            <option value="{{ class_group.pk }}" {% if selected_class_group == class_group.pk|stringformat:"s" %}selected{% endif %}>
+                {{ class_group.name }}
+            </option>
+        {% endfor %}
+    </select><br><br>
 
     <button type="submit">Create Account</button>
 </form>
