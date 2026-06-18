@@ -142,6 +142,16 @@ def class_detail(request, pk):
     add_form = TeacherAddStudentForm()
 
     if request.method == 'POST':
+        remove_student_id = request.POST.get('remove_student')
+        if remove_student_id:
+            student = get_object_or_404(Student, pk=remove_student_id, class_group=group)
+            student_name = student.name
+            with transaction.atomic():
+                student.class_group = None
+                student.save(update_fields=['class_group'])
+            messages.success(request, f'{student_name} is uit {group.name} verwijderd.')
+            return redirect('class_detail', pk=group.pk)
+
         add_form = TeacherAddStudentForm(request.POST)
         if add_form.is_valid():
             with transaction.atomic():
