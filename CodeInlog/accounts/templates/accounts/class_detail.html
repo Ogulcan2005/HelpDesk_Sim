@@ -166,6 +166,27 @@
         .btn-primary:hover {
             background: var(--brand-dark);
         }
+
+        .btn-remove {
+            border: none;
+            border-radius: 8px;
+            background: #b42318;
+            color: #fff;
+            font-size: 0.9rem;
+            font-weight: 700;
+            padding: 8px 14px;
+            cursor: pointer;
+            transition: background 0.15s ease;
+        }
+
+        .btn-remove:hover {
+            background: #912018;
+        }
+
+        .actions-cell {
+            width: 1%;
+            white-space: nowrap;
+        }
     </style>
 </head>
 <body>
@@ -200,6 +221,9 @@
                         <tr>
                             <th>Naam</th>
                             <th>E-mail</th>
+                            {% if can_add_students %}
+                                <th>Acties</th>
+                            {% endif %}
                         </tr>
                     </thead>
                     <tbody>
@@ -207,6 +231,15 @@
                             <tr>
                                 <td>{{ student.name }}</td>
                                 <td>{% if student.user %}{{ student.user.email }}{% else %}—{% endif %}</td>
+                                {% if can_add_students %}
+                                    <td class="actions-cell">
+                                        <form method="post" onsubmit="return confirm('Weet je zeker dat je {{ student.name }} uit deze klas wilt verwijderen? Het account blijft bestaan.');">
+                                            {% csrf_token %}
+                                            <input type="hidden" name="remove_student" value="{{ student.pk }}">
+                                            <button class="btn-remove" type="submit">Verwijderen</button>
+                                        </form>
+                                    </td>
+                                {% endif %}
                             </tr>
                         {% endfor %}
                     </tbody>
