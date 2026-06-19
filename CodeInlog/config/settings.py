@@ -122,3 +122,4 @@ LOGIN_REDIRECT_URL = '/'
 
 # 🔥 PRINT EMAIL IN TERMINAL (no real email needed)
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+DEFAULT_FROM_EMAIL = 'helpdesk@inlog.local'
