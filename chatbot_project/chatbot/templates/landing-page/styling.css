@@ -118,14 +118,14 @@ body {
     background: #e8f4f5;
 }
 
-/* Grid met drie voordeelkaarten naast elkaar (responsive) */
+/* UITGESCHAKELD: verwijder onderstaande comment-blok om de styling weer aan te zetten */
+/*
 .features {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: 20px;
 }
 
-/* Individuele kaart voor een voordeel (Snel antwoord, 24/7, etc.) */
 .feature-card {
     padding: 24px 22px;
     background: var(--card);
@@ -133,17 +133,16 @@ body {
     box-shadow: 0 8px 20px rgba(17, 24, 39, 0.08);
 }
 
-/* Titel binnen een voordeelkaart */
 .feature-card h2 {
     margin: 0 0 10px;
     font-size: 1.1rem;
     color: var(--brand);
 }
 
-/* Beschrijvingstekst binnen een voordeelkaart */
 .feature-card p {
     margin: 0;
     color: var(--muted);
     font-size: 0.92rem;
     line-height: 1.5;
 }
+*/
