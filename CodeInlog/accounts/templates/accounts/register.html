@@ -182,8 +182,13 @@
                 {% csrf_token %}
 
                 <div class="form-group">
-                    <label for="name">Gebruikersnaam</label>
-                    <input type="text" id="name" name="name" value="{{ name|default:'' }}" maxlength="100" required>
+                    <label for="first_name">Voornaam</label>
+                    <input type="text" id="first_name" name="first_name" value="{{ first_name|default:'' }}" maxlength="150" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="last_name">Achternaam</label>
+                    <input type="text" id="last_name" name="last_name" value="{{ last_name|default:'' }}" maxlength="150" required>
                 </div>
 
                 <div class="form-group">

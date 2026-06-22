@@ -41,33 +41,41 @@ def _register_context(**extra):
 
 def register(request):
     if request.method == 'POST':
-        name = request.POST.get('name', '').strip()
+        first_name = request.POST.get('first_name', '').strip()
+        last_name = request.POST.get('last_name', '').strip()
         email = request.POST.get('email', '').strip().lower()
         password = request.POST.get('password')
         password2 = request.POST.get('password2')
         class_group_id = request.POST.get('class_group')
 
         form_data = {
-            'name': name,
+            'first_name': first_name,
+            'last_name': last_name,
             'email': email,
             'selected_class_group': class_group_id,
         }
 
-        if not name:
+        if not first_name:
             return render(request, 'accounts/register.html', _register_context(
-                message='Gebruikersnaam is verplicht',
+                message='Voornaam is verplicht',
+                **form_data,
+            ))
+
+        if not last_name:
+            return render(request, 'accounts/register.html', _register_context(
+                message='Achternaam is verplicht',
                 **form_data,
             ))
 
         if password != password2:
             return render(request, 'accounts/register.html', _register_context(
-                message='Passwords do not match',
+                message='Wachtwoorden komen niet overeen',
                 **form_data,
             ))
 
         if User.objects.filter(username=email).exists():
             return render(request, 'accounts/register.html', _register_context(
-                message='Account already exists',
+                message='Er bestaat al een account met dit e-mailadres',
                 **form_data,
             ))
 
@@ -83,16 +91,18 @@ def register(request):
                 username=email,
                 email=email,
                 password=password,
-                first_name=name,
+                first_name=first_name,
+                last_name=last_name,
             )
             Student.objects.create(
                 user=user,
-                name=name,
+                first_name=first_name,
+                last_name=last_name,
                 class_group=class_group,
             )
 
         return render(request, 'accounts/register.html', _register_context(
-            message='Account created!',
+            message='Account aangemaakt!',
         ))
 
     return render(request, 'accounts/register.html', _register_context())
@@ -137,7 +147,7 @@ def class_detail(request, pk):
     if not _user_can_access_class(request.user, group):
         raise PermissionDenied
 
-    students = group.student_set.select_related('user').order_by('name')
+    students = group.student_set.select_related('user').order_by('last_name', 'first_name')
     teacher = getattr(group, 'teacher', None)
     add_form = TeacherAddStudentForm()
 
@@ -145,7 +155,7 @@ def class_detail(request, pk):
         remove_student_id = request.POST.get('remove_student')
         if remove_student_id:
             student = get_object_or_404(Student, pk=remove_student_id, class_group=group)
-            student_name = student.name
+            student_name = student.full_name
             with transaction.atomic():
                 student.class_group = None
                 student.save(update_fields=['class_group'])
@@ -156,7 +166,7 @@ def class_detail(request, pk):
         if add_form.is_valid():
             with transaction.atomic():
                 add_form.save(class_group=group)
-            messages.success(request, f'{add_form.cleaned_data["name"]} is toegevoegd aan {group.name}.')
+            messages.success(request, f'{add_form.full_name} is toegevoegd aan {group.name}.')
             return redirect('class_detail', pk=group.pk)
 
     return render(request, 'accounts/class_detail.html', {

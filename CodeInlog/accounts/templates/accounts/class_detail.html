@@ -207,7 +207,7 @@
             <h1>{{ group.name }}</h1>
             <p class="subtitle">
                 {% if teacher %}
-                    Docent: <strong>{{ teacher.name }}</strong>
+                    Docent: <strong>{{ teacher.full_name }}</strong>
                 {% else %}
                     Deze klas heeft nog geen docent.
                 {% endif %}
@@ -219,7 +219,8 @@
                 <table>
                     <thead>
                         <tr>
-                            <th>Naam</th>
+                            <th>Voornaam</th>
+                            <th>Achternaam</th>
                             <th>E-mail</th>
                             {% if can_add_students %}
                                 <th>Acties</th>
@@ -229,11 +230,12 @@
                     <tbody>
                         {% for student in students %}
                             <tr>
-                                <td>{{ student.name }}</td>
+                                <td>{{ student.first_name }}</td>
+                                <td>{{ student.last_name }}</td>
                                 <td>{% if student.user %}{{ student.user.email }}{% else %}—{% endif %}</td>
                                 {% if can_add_students %}
                                     <td class="actions-cell">
-                                        <form method="post" onsubmit="return confirm('Weet je zeker dat je {{ student.name }} uit deze klas wilt verwijderen? Het account blijft bestaan.');">
+                                        <form method="post" onsubmit="return confirm('Weet je zeker dat je {{ student.full_name }} uit deze klas wilt verwijderen? Het account blijft bestaan.');">
                                             {% csrf_token %}
                                             <input type="hidden" name="remove_student" value="{{ student.pk }}">
                                             <button class="btn-remove" type="submit">Verwijderen</button>
@@ -255,9 +257,14 @@
                 <form method="post">
                     {% csrf_token %}
                     <div class="form-group">
-                        <label for="{{ add_form.name.id_for_label }}">{{ add_form.name.label }}</label>
-                        {{ add_form.name }}
-                        {{ add_form.name.errors }}
+                        <label for="{{ add_form.first_name.id_for_label }}">{{ add_form.first_name.label }}</label>
+                        {{ add_form.first_name }}
+                        {{ add_form.first_name.errors }}
+                    </div>
+                    <div class="form-group">
+                        <label for="{{ add_form.last_name.id_for_label }}">{{ add_form.last_name.label }}</label>
+                        {{ add_form.last_name }}
+                        {{ add_form.last_name.errors }}
                     </div>
                     <div class="form-group">
                         <label for="{{ add_form.email.id_for_label }}">{{ add_form.email.label }}</label>

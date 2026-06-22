@@ -74,7 +74,8 @@ class UserAccountFormMixin(forms.ModelForm):
             user = instance.user
             user.username = email
             user.email = email
-            user.first_name = instance.name
+            user.first_name = instance.first_name
+            user.last_name = instance.last_name
             if password:
                 user.set_password(password)
             user.save()
@@ -84,7 +85,8 @@ class UserAccountFormMixin(forms.ModelForm):
             username=email,
             email=email,
             password=password,
-            first_name=instance.name,
+            first_name=instance.first_name,
+            last_name=instance.last_name,
         )
         instance.user = user
         return user
@@ -92,13 +94,15 @@ class UserAccountFormMixin(forms.ModelForm):
     def save(self, commit=True):
         email = self.cleaned_data['email']
         password = self.cleaned_data.get('password') or None
-        name = self.cleaned_data['name']
+        first_name = self.cleaned_data['first_name']
+        last_name = self.cleaned_data['last_name']
         class_group = self.cleaned_data.get('class_group')
         role = self.cleaned_data.get('role', self.default_role)
 
         if not self.show_role:
             instance = super().save(commit=False)
-            instance.name = name
+            instance.first_name = first_name
+            instance.last_name = last_name
             if commit:
                 self._ensure_user(instance, email, password)
                 instance.save()
@@ -107,17 +111,20 @@ class UserAccountFormMixin(forms.ModelForm):
 
         if not commit:
             instance = super().save(commit=False)
-            instance.name = name
+            instance.first_name = first_name
+            instance.last_name = last_name
             instance.class_group = class_group
             return instance
 
         if self.instance.pk:
-            self.instance.name = name
+            self.instance.first_name = first_name
+            self.instance.last_name = last_name
             user = self._ensure_user(self.instance, email, password)
             return save_profile_for_role(
                 role=role,
                 user=user,
-                name=name,
+                first_name=first_name,
+                last_name=last_name,
                 class_group=class_group,
                 existing_instance=self.instance,
             )
@@ -126,12 +133,14 @@ class UserAccountFormMixin(forms.ModelForm):
             username=email,
             email=email,
             password=password or '',
-            first_name=name,
+            first_name=first_name,
+            last_name=last_name,
         )
         return save_profile_for_role(
             role=role,
             user=user,
-            name=name,
+            first_name=first_name,
+            last_name=last_name,
             class_group=class_group,
         )
 
@@ -142,7 +151,7 @@ class StudentAdminForm(UserAccountFormMixin):
 
     class Meta:
         model = Student
-        fields = ('name', 'class_group', 'email', 'password', 'role')
+        fields = ('first_name', 'last_name', 'class_group', 'email', 'password', 'role')
 
 
 class TeacherAdminForm(UserAccountFormMixin):
@@ -151,7 +160,7 @@ class TeacherAdminForm(UserAccountFormMixin):
 
     class Meta:
         model = Teacher
-        fields = ('name', 'class_group', 'email', 'password', 'role')
+        fields = ('first_name', 'last_name', 'class_group', 'email', 'password', 'role')
 
 
 class StudentInlineForm(UserAccountFormMixin):
@@ -159,7 +168,7 @@ class StudentInlineForm(UserAccountFormMixin):
 
     class Meta:
         model = Student
-        fields = ('name', 'email', 'password')
+        fields = ('first_name', 'last_name', 'email', 'password')
 
 
 class TeacherInlineForm(UserAccountFormMixin):
@@ -167,11 +176,12 @@ class TeacherInlineForm(UserAccountFormMixin):
 
     class Meta:
         model = Teacher
-        fields = ('name', 'email', 'password')
+        fields = ('first_name', 'last_name', 'email', 'password')
 
 
 class TeacherAddStudentForm(forms.Form):
-    name = forms.CharField(label='Naam', max_length=100)
+    first_name = forms.CharField(label='Voornaam', max_length=150)
+    last_name = forms.CharField(label='Achternaam', max_length=150)
     email = forms.EmailField(label='E-mail')
     password = forms.CharField(
         label='Wachtwoord',
@@ -184,19 +194,26 @@ class TeacherAddStudentForm(forms.Form):
             raise forms.ValidationError('Er bestaat al een account met dit e-mailadres.')
         return email
 
+    @property
+    def full_name(self):
+        return f'{self.cleaned_data["first_name"]} {self.cleaned_data["last_name"]}'.strip()
+
     def save(self, class_group):
         email = self.cleaned_data['email']
         password = self.cleaned_data['password']
-        name = self.cleaned_data['name']
+        first_name = self.cleaned_data['first_name']
+        last_name = self.cleaned_data['last_name']
 
         user = User.objects.create_user(
             username=email,
             email=email,
             password=password,
-            first_name=name,
+            first_name=first_name,
+            last_name=last_name,
         )
         return Student.objects.create(
             user=user,
-            name=name,
+            first_name=first_name,
+            last_name=last_name,
             class_group=class_group,
         )

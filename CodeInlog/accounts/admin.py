@@ -101,7 +101,7 @@ class RoleSwitchAdminMixin:
 @admin.register(Student)
 class StudentAdmin(RoleSwitchAdminMixin, admin.ModelAdmin):
     form = StudentAdminForm
-    list_display = ('name', 'email', 'role_display', 'class_group')
+    list_display = ('full_name_display', 'email', 'role_display', 'class_group')
     list_filter = ('class_group',)
     actions = [remove_from_class]
 
@@ -109,6 +109,10 @@ class StudentAdmin(RoleSwitchAdminMixin, admin.ModelAdmin):
     @admin.display(description='E-mail')
     def email(self, obj):
         return obj.user.email if obj.user_id else '—'
+
+    @admin.display(description='Naam')
+    def full_name_display(self, obj):
+        return obj.full_name
 
     # Toont de rol in de admin-lijst.
     @admin.display(description='Rol')
@@ -120,7 +124,7 @@ class StudentAdmin(RoleSwitchAdminMixin, admin.ModelAdmin):
 @admin.register(Teacher)
 class TeacherAdmin(RoleSwitchAdminMixin, admin.ModelAdmin):
     form = TeacherAdminForm
-    list_display = ('name', 'email', 'role_display', 'class_group')
+    list_display = ('full_name_display', 'email', 'role_display', 'class_group')
     list_filter = ('class_group',)
     actions = [remove_from_class]
 
@@ -128,6 +132,10 @@ class TeacherAdmin(RoleSwitchAdminMixin, admin.ModelAdmin):
     @admin.display(description='E-mail')
     def email(self, obj):
         return obj.user.email if obj.user_id else '—'
+
+    @admin.display(description='Naam')
+    def full_name_display(self, obj):
+        return obj.full_name
 
     # Toont de rol in de admin-lijst.
     @admin.display(description='Rol')

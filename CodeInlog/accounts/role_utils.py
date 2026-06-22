@@ -33,14 +33,20 @@ def _validate_teacher_class_group(class_group, user=None):
         )
 
 
-def save_profile_for_role(*, role, user, name, class_group, existing_instance=None):
+def save_profile_for_role(*, role, user, first_name, last_name, class_group, existing_instance=None):
     """Slaat het profiel op in Student of Teacher volgens role. Verwijdert het andere profiel."""
     want_student = role == ROLE_STUDENT
+    profile_defaults = {
+        'first_name': first_name,
+        'last_name': last_name,
+        'class_group': class_group,
+    }
 
     if existing_instance is not None:
         if isinstance(existing_instance, Student) and want_student:
             existing_instance.user = user
-            existing_instance.name = name
+            existing_instance.first_name = first_name
+            existing_instance.last_name = last_name
             existing_instance.class_group = class_group
             existing_instance.save()
             Teacher.objects.filter(user=user).delete()
@@ -50,7 +56,8 @@ def save_profile_for_role(*, role, user, name, class_group, existing_instance=No
             if class_group:
                 _validate_teacher_class_group(class_group, user=user)
             existing_instance.user = user
-            existing_instance.name = name
+            existing_instance.first_name = first_name
+            existing_instance.last_name = last_name
             existing_instance.class_group = class_group
             existing_instance.save()
             Student.objects.filter(user=user).delete()
@@ -63,7 +70,11 @@ def save_profile_for_role(*, role, user, name, class_group, existing_instance=No
             existing_instance.delete()
             teacher, _ = Teacher.objects.update_or_create(
                 user=user,
-                defaults={'name': name, 'class_group': class_group or old_class_group},
+                defaults={
+                    'first_name': first_name,
+                    'last_name': last_name,
+                    'class_group': class_group or old_class_group,
+                },
             )
             return teacher
 
@@ -71,7 +82,11 @@ def save_profile_for_role(*, role, user, name, class_group, existing_instance=No
             existing_instance.delete()
             student, _ = Student.objects.update_or_create(
                 user=user,
-                defaults={'name': name, 'class_group': class_group or old_class_group},
+                defaults={
+                    'first_name': first_name,
+                    'last_name': last_name,
+                    'class_group': class_group or old_class_group,
+                },
             )
             return student
 
@@ -79,7 +94,7 @@ def save_profile_for_role(*, role, user, name, class_group, existing_instance=No
         Teacher.objects.filter(user=user).delete()
         student, _ = Student.objects.update_or_create(
             user=user,
-            defaults={'name': name, 'class_group': class_group},
+            defaults=profile_defaults,
         )
         return student
 
@@ -88,6 +103,6 @@ def save_profile_for_role(*, role, user, name, class_group, existing_instance=No
     Student.objects.filter(user=user).delete()
     teacher, _ = Teacher.objects.update_or_create(
         user=user,
-        defaults={'name': name, 'class_group': class_group},
+        defaults=profile_defaults,
     )
     return teacher

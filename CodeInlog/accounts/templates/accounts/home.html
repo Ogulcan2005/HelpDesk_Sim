@@ -191,7 +191,7 @@
                     Je bent succesvol ingelogd en kunt nu verder in HelpDesk.
                 </p>
                 <p class="meta">
-                    Ingelogd als <strong>{{ user.username }}</strong>{% if role %} • Rol: <strong>{{ role }}</strong>{% endif %}
+                    Ingelogd als <strong>{{ user.get_full_name|default:user.email }}</strong>{% if role %} • Rol: <strong>{{ role }}</strong>{% endif %}
                 </p>
 
                 {% if role == "Docent" %}
