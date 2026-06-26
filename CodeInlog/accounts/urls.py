@@ -9,4 +9,5 @@ urlpatterns = [
     path('logout/', views.user_logout, name='logout'),
     path('admin-only/', views.admin_only, name='admin_only'),
     path('class/<int:pk>/', views.class_detail, name='class_detail'),
+    path('docent/studenten/', views.teacher_student_management, name='teacher_student_management'),
 ]

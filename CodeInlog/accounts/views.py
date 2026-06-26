@@ -6,7 +6,8 @@ from django.contrib.admin.views.decorators import staff_member_required
 from django.contrib import messages
 from django.core.exceptions import PermissionDenied
 from django.db import transaction
-from .forms import TeacherAddStudentForm
+from django.db.models import Prefetch
+from .forms import TeacherAddStudentForm, TeacherCreateStudentForm
 from .models import ClassGroup, Student, Teacher
 from .role_utils import ROLE_STUDENT, ROLE_TEACHER, profile_role_for_user
 
@@ -130,6 +131,12 @@ def _user_can_access_class(user, class_group):
     return teacher is not None and teacher.class_group_id == class_group.pk
 
 
+def _user_can_manage_students(user):
+    if user.is_staff:
+        return True
+    return _get_teacher_profile(user) is not None
+
+
 @login_required
 def home(request):
     teacher = _get_teacher_profile(request.user)
@@ -174,7 +181,47 @@ def class_detail(request, pk):
         'students': students,
         'teacher': teacher,
         'add_form': add_form,
-        'can_add_students': _get_teacher_profile(request.user) is not None or request.user.is_staff,
+        'can_add_students': _user_can_manage_students(request.user),
+    })
+
+
+@login_required
+def teacher_student_management(request):
+    if not _user_can_manage_students(request.user):
+        raise PermissionDenied
+
+    student_queryset = Student.objects.select_related('user').order_by('last_name', 'first_name')
+    class_groups = ClassGroup.objects.prefetch_related(
+        Prefetch('student_set', queryset=student_queryset),
+    ).order_by('name')
+    form = TeacherCreateStudentForm()
+
+    if request.method == 'POST':
+        remove_student_id = request.POST.get('remove_student')
+        if remove_student_id:
+            student = get_object_or_404(Student, pk=remove_student_id, class_group__isnull=False)
+            student_name = student.full_name
+            class_name = student.class_group.name
+            with transaction.atomic():
+                student.class_group = None
+                student.save(update_fields=['class_group'])
+            messages.success(request, f'{student_name} is uit {class_name} verwijderd.')
+            return redirect('teacher_student_management')
+
+        form = TeacherCreateStudentForm(request.POST)
+        if form.is_valid():
+            with transaction.atomic():
+                form.save()
+            class_name = form.cleaned_data['class_group'].name
+            messages.success(
+                request,
+                f'{form.full_name} is aangemaakt en toegevoegd aan {class_name}.',
+            )
+            return redirect('teacher_student_management')
+
+    return render(request, 'accounts/teacher_students.html', {
+        'form': form,
+        'class_groups': class_groups,
     })
 
 

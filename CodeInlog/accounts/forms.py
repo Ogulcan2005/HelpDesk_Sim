@@ -2,7 +2,7 @@ from django import forms
 from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
 
-from .models import Student, Teacher
+from .models import ClassGroup, Student, Teacher
 from .role_utils import (
     ROLE_CHOICES,
     ROLE_STUDENT,
@@ -217,3 +217,13 @@ class TeacherAddStudentForm(forms.Form):
             last_name=last_name,
             class_group=class_group,
         )
+
+
+class TeacherCreateStudentForm(TeacherAddStudentForm):
+    class_group = forms.ModelChoiceField(
+        queryset=ClassGroup.objects.order_by('name'),
+        label='Klas',
+    )
+
+    def save(self):
+        return super().save(class_group=self.cleaned_data['class_group'])

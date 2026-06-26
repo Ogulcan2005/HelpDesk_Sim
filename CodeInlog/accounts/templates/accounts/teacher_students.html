@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Studenten beheren - HelpDesk</title>
+</head>
+<body>
+
+    <h1>HelpDesk</h1>
+
+    <a href="{% url 'home' %}">← Terug naar home</a>
+
+    {% if messages %}
+        {% for message in messages %}
+            <p>{{ message }}</p>
+        {% endfor %}
+    {% endif %}
+
+    <h2>Student account aanmaken</h2>
+
+    <form method="post">
+        {% csrf_token %}
+
+        <p>
+            <label for="{{ form.first_name.id_for_label }}">
+                {{ form.first_name.label }}
+            </label><br>
+            {{ form.first_name }}
+            {{ form.first_name.errors }}
+        </p>
+
+        <p>
+            <label for="{{ form.last_name.id_for_label }}">
+                {{ form.last_name.label }}
+            </label><br>
+            {{ form.last_name }}
+            {{ form.last_name.errors }}
+        </p>
+
+        <p>
+            <label for="{{ form.email.id_for_label }}">
+                {{ form.email.label }}
+            </label><br>
+            {{ form.email }}
+            {{ form.email.errors }}
+        </p>
+
+        <p>
+            <label for="{{ form.password.id_for_label }}">
+                {{ form.password.label }}
+            </label><br>
+            {{ form.password }}
+            {{ form.password.errors }}
+        </p>
+
+        <p>
+            <label for="{{ form.class_group.id_for_label }}">
+                {{ form.class_group.label }}
+            </label><br>
+            {{ form.class_group }}
+            {{ form.class_group.errors }}
+        </p>
+
+        <button type="submit">Account aanmaken</button>
+    </form>
+
+</body>
+</html>

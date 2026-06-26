@@ -200,10 +200,14 @@
                         {% if teacher_class %}
                             <p class="meta">Je bent docent van <strong>{{ teacher_class.name }}</strong>.</p>
                             <div class="cta-group">
-                                <a class="btn-primary" href="{% url 'class_detail' teacher_class.pk %}">Bekijk studenten</a>
+                                <a class="btn-primary" href="{% url 'class_detail' teacher_class.pk %}">Bekijk mijn klas</a>
+                                <a class="btn-secondary" href="{% url 'teacher_student_management' %}">Studenten beheren</a>
                             </div>
                         {% else %}
                             <p class="meta">Je bent nog niet aan een klas gekoppeld. Neem contact op met een administrator.</p>
+                            <div class="cta-group">
+                                <a class="btn-primary" href="{% url 'teacher_student_management' %}">Studenten beheren</a>
+                            </div>
                         {% endif %}
                     </section>
                 {% endif %}
