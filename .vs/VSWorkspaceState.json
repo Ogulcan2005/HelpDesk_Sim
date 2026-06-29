@@ -1,6 +1,7 @@
 {
   "ExpandedNodes": [
     "",
+<<<<<<< Updated upstream
     "\\chatbot_project",
     "\\chatbot_project\\chatbot",
     "\\chatbot_project\\chatbot\\templates",
@@ -12,5 +13,16 @@
     "\\CodeInlog\\config"
   ],
   "SelectedNode": "\\chatbot_project\\chatbot\\urls.py",
+=======
+    "\\HelpDesk_Sim",
+    "\\HelpDesk_Sim\\accounts",
+    "\\HelpDesk_Sim\\accounts\\templates",
+    "\\HelpDesk_Sim\\accounts\\templates\\accounts",
+    "\\HelpDesk_Sim\\chatbot",
+    "\\HelpDesk_Sim\\chatbot\\templates",
+    "\\HelpDesk_Sim\\chatbot\\templates\\chatbot"
+  ],
+  "SelectedNode": "\\HelpDesk_Sim\\chatbot\\templates\\chatbot\\chatlog.html",
+>>>>>>> Stashed changes
   "PreviewInSolutionExplorer": false
 }
