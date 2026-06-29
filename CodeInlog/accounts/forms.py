@@ -227,3 +227,49 @@ class TeacherCreateStudentForm(TeacherAddStudentForm):
 
     def save(self):
         return super().save(class_group=self.cleaned_data['class_group'])
+
+
+class TeacherEditStudentForm(forms.ModelForm):
+    email = forms.EmailField(label='E-mail')
+    password = forms.CharField(
+        label='Wachtwoord',
+        widget=forms.PasswordInput(render_value=False),
+        required=False,
+        help_text='Laat leeg om het wachtwoord niet te wijzigen.',
+    )
+
+    class Meta:
+        model = Student
+        fields = ('first_name', 'last_name', 'class_group')
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['class_group'].queryset = ClassGroup.objects.order_by('name')
+        self.fields['class_group'].required = False
+        self.fields['class_group'].empty_label = 'Geen klas'
+        if self.instance.user_id:
+            self.fields['email'].initial = self.instance.user.email
+
+    def clean_email(self):
+        email = self.cleaned_data['email'].strip().lower()
+        qs = User.objects.filter(username=email)
+        if self.instance.user_id:
+            qs = qs.exclude(pk=self.instance.user_id)
+        if qs.exists():
+            raise forms.ValidationError('Er bestaat al een account met dit e-mailadres.')
+        return email
+
+    def save(self):
+        student = super().save(commit=False)
+        email = self.cleaned_data['email']
+        password = self.cleaned_data.get('password')
+        user = student.user
+        user.username = email
+        user.email = email
+        user.first_name = student.first_name
+        user.last_name = student.last_name
+        if password:
+            user.set_password(password)
+        user.save()
+        student.save()
+        return student

@@ -6,8 +6,7 @@ from django.contrib.admin.views.decorators import staff_member_required
 from django.contrib import messages
 from django.core.exceptions import PermissionDenied
 from django.db import transaction
-from django.db.models import Prefetch
-from .forms import TeacherAddStudentForm, TeacherCreateStudentForm
+from .forms import TeacherAddStudentForm, TeacherCreateStudentForm, TeacherEditStudentForm
 from .models import ClassGroup, Student, Teacher
 from .role_utils import ROLE_STUDENT, ROLE_TEACHER, profile_role_for_user
 
@@ -190,22 +189,21 @@ def teacher_student_management(request):
     if not _user_can_manage_students(request.user):
         raise PermissionDenied
 
-    student_queryset = Student.objects.select_related('user').order_by('last_name', 'first_name')
-    class_groups = ClassGroup.objects.prefetch_related(
-        Prefetch('student_set', queryset=student_queryset),
-    ).order_by('name')
+    students = Student.objects.select_related('user', 'class_group').order_by('last_name', 'first_name')
     form = TeacherCreateStudentForm()
 
     if request.method == 'POST':
-        remove_student_id = request.POST.get('remove_student')
-        if remove_student_id:
-            student = get_object_or_404(Student, pk=remove_student_id, class_group__isnull=False)
+        delete_student_id = request.POST.get('delete_student')
+        if delete_student_id:
+            student = get_object_or_404(Student, pk=delete_student_id)
             student_name = student.full_name
-            class_name = student.class_group.name
             with transaction.atomic():
-                student.class_group = None
-                student.save(update_fields=['class_group'])
-            messages.success(request, f'{student_name} is uit {class_name} verwijderd.')
+                user = student.user
+                if user:
+                    user.delete()
+                else:
+                    student.delete()
+            messages.success(request, f'Account van {student_name} is verwijderd.')
             return redirect('teacher_student_management')
 
         form = TeacherCreateStudentForm(request.POST)
@@ -221,7 +219,29 @@ def teacher_student_management(request):
 
     return render(request, 'accounts/teacher_students.html', {
         'form': form,
-        'class_groups': class_groups,
+        'students': students,
+    })
+
+
+@login_required
+def teacher_student_edit(request, pk):
+    if not _user_can_manage_students(request.user):
+        raise PermissionDenied
+
+    student = get_object_or_404(Student.objects.select_related('user', 'class_group'), pk=pk)
+    form = TeacherEditStudentForm(instance=student)
+
+    if request.method == 'POST':
+        form = TeacherEditStudentForm(request.POST, instance=student)
+        if form.is_valid():
+            with transaction.atomic():
+                form.save()
+            messages.success(request, f'Account van {student.full_name} is bijgewerkt.')
+            return redirect('teacher_student_management')
+
+    return render(request, 'accounts/teacher_student_edit.html', {
+        'form': form,
+        'student': student,
     })
 
 
