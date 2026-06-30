@@ -1,54 +1,80 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="nl">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ student.full_name }} bewerken - HelpDesk</title>
+
+    <link rel="stylesheet" href="{% static 'accounts/css/teacher_student_edit.css' %}">
 </head>
 <body>
 
-<h1>HelpDesk</h1>
-
-<p><a href="{% url 'teacher_student_management' %}">← Terug naar overzicht</a></p>
-
-<h2>Student bewerken</h2>
-<p>{{ student.full_name }}</p>
-
-<form method="post">
-    {% csrf_token %}
+    <h1>HelpDesk</h1>
 
     <p>
-        <label for="{{ form.first_name.id_for_label }}">{{ form.first_name.label }}</label><br>
-        {{ form.first_name }}
-        {{ form.first_name.errors }}
+        <a href="{% url 'teacher_student_management' %}">
+            ← Terug naar overzicht
+        </a>
     </p>
 
-    <p>
-        <label for="{{ form.last_name.id_for_label }}">{{ form.last_name.label }}</label><br>
-        {{ form.last_name }}
-        {{ form.last_name.errors }}
-    </p>
+    <h2>Student bewerken</h2>
 
-    <p>
-        <label for="{{ form.email.id_for_label }}">{{ form.email.label }}</label><br>
-        {{ form.email }}
-        {{ form.email.errors }}
-    </p>
+    <p>{{ student.full_name }}</p>
 
-    <p>
-        <label for="{{ form.password.id_for_label }}">{{ form.password.label }}</label><br>
-        {{ form.password }}
-        {% if form.password.help_text %}<br><small>{{ form.password.help_text }}</small>{% endif %}
-        {{ form.password.errors }}
-    </p>
+    <form method="post">
+        {% csrf_token %}
 
-    <p>
-        <label for="{{ form.class_group.id_for_label }}">{{ form.class_group.label }}</label><br>
-        {{ form.class_group }}
-        {{ form.class_group.errors }}
-    </p>
+        <p>
+            <label for="{{ form.first_name.id_for_label }}">
+                {{ form.first_name.label }}
+            </label><br>
+            {{ form.first_name }}
+            {{ form.first_name.errors }}
+        </p>
 
-    <button type="submit">Opslaan</button>
-</form>
+        <p>
+            <label for="{{ form.last_name.id_for_label }}">
+                {{ form.last_name.label }}
+            </label><br>
+            {{ form.last_name }}
+            {{ form.last_name.errors }}
+        </p>
+
+        <p>
+            <label for="{{ form.email.id_for_label }}">
+                {{ form.email.label }}
+            </label><br>
+            {{ form.email }}
+            {{ form.email.errors }}
+        </p>
+
+        <p>
+            <label for="{{ form.password.id_for_label }}">
+                {{ form.password.label }}
+            </label><br>
+            {{ form.password }}
+
+            {% if form.password.help_text %}
+                <br>
+                <small>{{ form.password.help_text }}</small>
+            {% endif %}
+
+            {{ form.password.errors }}
+        </p>
+
+        <p>
+            <label for="{{ form.class_group.id_for_label }}">
+                {{ form.class_group.label }}
+            </label><br>
+            {{ form.class_group }}
+            {{ form.class_group.errors }}
+        </p>
+
+        <button type="submit">
+            Opslaan
+        </button>
+    </form>
 
 </body>
 </html>

@@ -1,96 +1,113 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="nl">
 <head>
     <meta charset="UTF-8">
-    <title>Studenten beheren</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Studenten beheren - HelpDesk</title>
+    <link rel="stylesheet" href="{% static 'accounts/css/teacher_students.css' %}">
 </head>
 <body>
 
-<p><a href="{% url 'home' %}">← Terug naar home</a></p>
+<div class="page-wrap">
 
-{% if messages %}
-    {% for message in messages %}
-        <p>{{ message }}</p>
-    {% endfor %}
-{% endif %}
+    <p><a class="back-link" href="{% url 'home' %}">← Terug naar home</a></p>
 
-<h2>Studenten beheren</h2>
-<p>Bekijk, maak aan, bewerk en verwijder studentaccounts.</p>
-
-<h3>Nieuw account aanmaken</h3>
-
-<form method="post">
-    {% csrf_token %}
-
-    <p>
-        <label for="{{ form.first_name.id_for_label }}">{{ form.first_name.label }}</label><br>
-        {{ form.first_name }}
-        {{ form.first_name.errors }}
-    </p>
-
-    <p>
-        <label for="{{ form.last_name.id_for_label }}">{{ form.last_name.label }}</label><br>
-        {{ form.last_name }}
-        {{ form.last_name.errors }}
-    </p>
-
-    <p>
-        <label for="{{ form.email.id_for_label }}">{{ form.email.label }}</label><br>
-        {{ form.email }}
-        {{ form.email.errors }}
-    </p>
-
-    <p>
-        <label for="{{ form.password.id_for_label }}">{{ form.password.label }}</label><br>
-        {{ form.password }}
-        {{ form.password.errors }}
-    </p>
-
-    <p>
-        <label for="{{ form.class_group.id_for_label }}">{{ form.class_group.label }}</label><br>
-        {{ form.class_group }}
-        {{ form.class_group.errors }}
-    </p>
-
-    <button type="submit">Account aanmaken</button>
-</form>
-
-<h3>Alle studenten ({{ students|length }})</h3>
-
-{% if students %}
-    <table border="1" cellpadding="8" cellspacing="0">
-        <thead>
-            <tr>
-                <th>Voornaam</th>
-                <th>Achternaam</th>
-                <th>E-mail</th>
-                <th>Klas</th>
-                <th>Acties</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for student in students %}
-                <tr>
-                    <td>{{ student.first_name }}</td>
-                    <td>{{ student.last_name }}</td>
-                    <td>{% if student.user %}{{ student.user.email }}{% else %}—{% endif %}</td>
-                    <td>{% if student.class_group %}{{ student.class_group.name }}{% else %}—{% endif %}</td>
-                    <td>
-                        <a href="{% url 'teacher_student_edit' student.pk %}">Bewerken</a>
-                        |
-                        <form method="post" onsubmit="return confirm('Weet je zeker dat je het account van {{ student.full_name }} permanent wilt verwijderen?');">
-                            {% csrf_token %}
-                            <input type="hidden" name="delete_student" value="{{ student.pk }}">
-                            <button type="submit">Verwijderen</button>
-                        </form>
-                    </td>
-                </tr>
+    {% if messages %}
+        <div class="messages">
+            {% for message in messages %}
+                <p>{{ message }}</p>
             {% endfor %}
-        </tbody>
-    </table>
-{% else %}
-    <p>Er zijn nog geen studentaccounts.</p>
-{% endif %}
+        </div>
+    {% endif %}
+
+    <div class="page-header">
+        <h2>Studenten beheren</h2>
+        <p>Bekijk, maak aan, bewerk en verwijder studentaccounts.</p>
+    </div>
+
+    <section class="card">
+        <h3>Nieuw account aanmaken</h3>
+
+        <form method="post">
+            {% csrf_token %}
+
+            <p>
+                <label for="{{ form.first_name.id_for_label }}">{{ form.first_name.label }}</label>
+                {{ form.first_name }}
+                {{ form.first_name.errors }}
+            </p>
+
+            <p>
+                <label for="{{ form.last_name.id_for_label }}">{{ form.last_name.label }}</label>
+                {{ form.last_name }}
+                {{ form.last_name.errors }}
+            </p>
+
+            <p>
+                <label for="{{ form.email.id_for_label }}">{{ form.email.label }}</label>
+                {{ form.email }}
+                {{ form.email.errors }}
+            </p>
+
+            <p>
+                <label for="{{ form.password.id_for_label }}">{{ form.password.label }}</label>
+                {{ form.password }}
+                {{ form.password.errors }}
+            </p>
+
+            <p>
+                <label for="{{ form.class_group.id_for_label }}">{{ form.class_group.label }}</label>
+                {{ form.class_group }}
+                {{ form.class_group.errors }}
+            </p>
+
+            <button class="btn-primary" type="submit">Account aanmaken</button>
+        </form>
+    </section>
+
+    <section class="card">
+        <h3>Alle studenten ({{ students|length }})</h3>
+
+        {% if students %}
+            <div class="students-table-wrap">
+                <table class="students-table">
+                    <thead>
+                        <tr>
+                            <th>Voornaam</th>
+                            <th>Achternaam</th>
+                            <th>E-mail</th>
+                            <th>Klas</th>
+                            <th>Acties</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for student in students %}
+                            <tr>
+                                <td>{{ student.first_name }}</td>
+                                <td>{{ student.last_name }}</td>
+                                <td>{% if student.user %}{{ student.user.email }}{% else %}—{% endif %}</td>
+                                <td>{% if student.class_group %}{{ student.class_group.name }}{% else %}—{% endif %}</td>
+                                <td class="actions-cell">
+                                    <a href="{% url 'teacher_student_edit' student.pk %}">Bewerken</a>
+                                    |
+                                    <form method="post" onsubmit="return confirm('Weet je zeker dat je het account van {{ student.full_name }} permanent wilt verwijderen?');">
+                                        {% csrf_token %}
+                                        <input type="hidden" name="delete_student" value="{{ student.pk }}">
+                                        <button class="btn-danger" type="submit">Verwijderen</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        {% else %}
+            <p class="empty-state">Er zijn nog geen studentaccounts.</p>
+        {% endif %}
+    </section>
+
+</div>
 
 </body>
 </html>
