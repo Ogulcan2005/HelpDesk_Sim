@@ -1,0 +1,190 @@
+/* Kleuren en basiswaarden voor de hele pagina */
+:root {
+    --brand: #007d84;
+    --brand-dark: #00676d;
+    --bg: #eef2f6;
+    --card: #ffffff;
+    --text: #1f2933;
+    --muted: #5b6770;
+    --line: #d6dde5;
+    --danger: #922b36;
+}
+
+/* Zorgt dat padding en borders binnen de breedte van elementen blijven */
+* {
+    box-sizing: border-box;
+}
+
+/* Basisopmaak: lettertype, achtergrondkleur en tekstkleur */
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+}
+
+/* Vaste groene balk bovenaan met de HelpDesk-titel */
+.topbar {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 22px;
+    background: var(--brand);
+    color: #fff;
+    font-weight: 700;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* Hoofdinhoud: gecentreerd met maximale breedte */
+.page {
+    max-width: 720px;
+    margin: 24px auto;
+    padding: 0 16px 24px;
+}
+
+/* Link terug naar het studentenoverzicht */
+.back-link {
+    margin: 0 0 16px;
+}
+
+.back-link a {
+    color: var(--brand-dark);
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.back-link a:hover {
+    text-decoration: underline;
+}
+
+/* Witte kaart rond het bewerkformulier */
+.card {
+    padding: 16px;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    box-shadow: 0 8px 18px rgba(15, 23, 42, 0.06);
+}
+
+/* Titel binnen de kaart */
+.card h2 {
+    margin: 0 0 8px;
+    font-size: 1.05rem;
+}
+
+/* Kleine sectiekop boven de titel */
+.section-title {
+    margin: 0 0 10px;
+    font-size: 0.82rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #4d5c68;
+}
+
+/* Naam van de student die wordt bewerkt */
+.student-name {
+    margin: 0 0 16px;
+    color: var(--muted);
+    font-size: 0.95rem;
+}
+
+/* Grid-layout voor formuliervelden */
+.form-grid {
+    display: grid;
+    gap: 14px;
+}
+
+/* Op grotere schermen: twee kolommen naast elkaar */
+@media (min-width: 680px) {
+    .form-grid.two {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .form-grid.two .btn-row {
+        grid-column: 1 / -1;
+    }
+}
+
+/* Label boven elk invoerveld */
+label {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 0.9rem;
+    color: var(--muted);
+}
+
+/* Styling voor tekstvelden, keuzelijsten en tekstgebieden */
+input,
+select,
+textarea {
+    width: 100%;
+    padding: 10px 11px;
+    border: 1px solid #c8d2db;
+    border-radius: 8px;
+    font-size: 0.96rem;
+    background: #fff;
+    outline: none;
+}
+
+/* Groene rand bij focus op invoervelden */
+input:focus,
+select:focus,
+textarea:focus {
+    border-color: var(--brand);
+    box-shadow: 0 0 0 3px rgba(0, 125, 132, 0.15);
+}
+
+/* Hulptekst onder een veld (bijv. wachtwoordregels) */
+.help-text {
+    display: block;
+    margin-top: 6px;
+    color: var(--muted);
+    font-size: 0.85rem;
+    line-height: 1.4;
+}
+
+/* Foutmeldingen van Django-formuliervalidatie */
+.errorlist {
+    margin: 6px 0 0;
+    padding: 0;
+    list-style: none;
+    color: var(--danger);
+    font-size: 0.85rem;
+}
+
+/* Rij met actieknoppen onderaan het formulier */
+.btn-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 4px;
+}
+
+/* Basisstijl voor alle knoppen */
+.btn {
+    padding: 10px 14px;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.92rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform 0.1s ease, background 0.15s ease;
+}
+
+.btn:hover {
+    transform: translateY(-1px);
+}
+
+/* Groene primaire knop voor opslaan */
+.btn-primary {
+    background: var(--brand);
+    color: #fff;
+}
+
+/* Donkerder groen bij hover op primaire knop */
+.btn-primary:hover {
+    background: var(--brand-dark);
+}
