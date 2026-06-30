@@ -6,6 +6,7 @@ from django.shortcuts import render
 from django.http import JsonResponse
 from .models import QuestionAnswer, ChatLog
 from django.contrib.auth.models import User
+from django.http import HttpResponse
 
 # Importeer uit de 'chatbot' app
 from .models import ChatLog, QuestionAnswer 
@@ -270,7 +271,6 @@ def end_chat(request):
     request.session.pop('chat_messages', None)
 
     return JsonResponse({'status': 'ok', 'message': 'Gesprek opgeslagen en beëindigd.'})
-
 @login_required
 def view_chatlog(request, user_id=None):
     """
@@ -281,7 +281,6 @@ def view_chatlog(request, user_id=None):
     target_user = get_object_or_404(User, pk=target_user_id)
     
     # 2. Machtigingscontrole
-    # We gebruiken teacher_profile en student_profile zoals gedefinieerd in models.py
     is_teacher = hasattr(request.user, 'teacher_profile')
     
     authorized = False
@@ -294,7 +293,8 @@ def view_chatlog(request, user_id=None):
             authorized = True
             
     if not authorized:
-        return render(request, 'chatbot/403.html', status=403)
+        # Aangepast om een HttpResponse te sturen in plaats van een ontbrekend template
+        return HttpResponse("Je hebt geen toestemming om de logs van deze student te bekijken.", status=403)
         
     # 3. Chatlog ophalen
     chat_log = ChatLog.objects.filter(user=target_user).first()
@@ -302,7 +302,6 @@ def view_chatlog(request, user_id=None):
     # 4. Studenten ophalen voor de dropdown
     students_in_class = []
     if is_teacher:
-        # Gebruik select_related('user') om "missing attribute" fouten bij opvragen te voorkomen
         students_in_class = Student.objects.select_related('user').filter(
             class_group=request.user.teacher_profile.class_group
         )

@@ -3,125 +3,32 @@
   "WorkspaceRootPath": "C:\\HelpDesk_Sim\\",
   "Documents": [
     {
-<<<<<<< Updated upstream
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\HelpDesk_Sim\\chatbot_project\\chatbot\\urls.py||{3B902123-F8A7-4915-9F01-361F908088D0}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:chatbot_project\\chatbot\\urls.py||{3B902123-F8A7-4915-9F01-361F908088D0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\HelpDesk_Sim\\CodeInlog\\accounts\\models.py||{3B902123-F8A7-4915-9F01-361F908088D0}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:CodeInlog\\accounts\\models.py||{3B902123-F8A7-4915-9F01-361F908088D0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\HelpDesk_Sim\\chatbot_project\\chatbot\\tests.py||{3B902123-F8A7-4915-9F01-361F908088D0}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:chatbot_project\\chatbot\\tests.py||{3B902123-F8A7-4915-9F01-361F908088D0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\HelpDesk_Sim\\chatbot_project\\chatbot\\admin.py||{3B902123-F8A7-4915-9F01-361F908088D0}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:chatbot_project\\chatbot\\admin.py||{3B902123-F8A7-4915-9F01-361F908088D0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\HelpDesk_Sim\\chatbot_project\\chatbot\\models.py||{3B902123-F8A7-4915-9F01-361F908088D0}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:chatbot_project\\chatbot\\models.py||{3B902123-F8A7-4915-9F01-361F908088D0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\HelpDesk_Sim\\chatbot_project\\config\\settings.py||{3B902123-F8A7-4915-9F01-361F908088D0}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:chatbot_project\\config\\settings.py||{3B902123-F8A7-4915-9F01-361F908088D0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\HelpDesk_Sim\\chatbot_project\\chatbot\\templates\\chatbot\\index.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:chatbot_project\\chatbot\\templates\\chatbot\\index.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\HelpDesk_Sim\\chatbot_project\\manage.py||{3B902123-F8A7-4915-9F01-361F908088D0}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:chatbot_project\\manage.py||{3B902123-F8A7-4915-9F01-361F908088D0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\HelpDesk_Sim\\chatbot_project\\chatbot\\views.py||{3B902123-F8A7-4915-9F01-361F908088D0}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:chatbot_project\\chatbot\\views.py||{3B902123-F8A7-4915-9F01-361F908088D0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\HelpDesk_Sim\\chatbot_project\\chatbot\\apps.py||{3B902123-F8A7-4915-9F01-361F908088D0}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:chatbot_project\\chatbot\\apps.py||{3B902123-F8A7-4915-9F01-361F908088D0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\HelpDesk_Sim\\CodeInlog\\accounts\\views.py||{3B902123-F8A7-4915-9F01-361F908088D0}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:CodeInlog\\accounts\\views.py||{3B902123-F8A7-4915-9F01-361F908088D0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\HelpDesk_Sim\\CodeInlog\\accounts\\forms.py||{3B902123-F8A7-4915-9F01-361F908088D0}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:CodeInlog\\accounts\\forms.py||{3B902123-F8A7-4915-9F01-361F908088D0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\HelpDesk_Sim\\CodeInlog\\accounts\\apps.py||{3B902123-F8A7-4915-9F01-361F908088D0}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:CodeInlog\\accounts\\apps.py||{3B902123-F8A7-4915-9F01-361F908088D0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\HelpDesk_Sim\\CodeInlog\\accounts\\urls.py||{3B902123-F8A7-4915-9F01-361F908088D0}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:CodeInlog\\accounts\\urls.py||{3B902123-F8A7-4915-9F01-361F908088D0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\HelpDesk_Sim\\CodeInlog\\accounts\\tests.py||{3B902123-F8A7-4915-9F01-361F908088D0}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:CodeInlog\\accounts\\tests.py||{3B902123-F8A7-4915-9F01-361F908088D0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\HelpDesk_Sim\\CodeInlog\\accounts\\role_utils.py||{3B902123-F8A7-4915-9F01-361F908088D0}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:CodeInlog\\accounts\\role_utils.py||{3B902123-F8A7-4915-9F01-361F908088D0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\HelpDesk_Sim\\CodeInlog\\accounts\\admin.py||{3B902123-F8A7-4915-9F01-361F908088D0}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:CodeInlog\\accounts\\admin.py||{3B902123-F8A7-4915-9F01-361F908088D0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\HelpDesk_Sim\\CodeInlog\\accounts\\templates\\accounts\\home.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:CodeInlog\\accounts\\templates\\accounts\\home.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\HelpDesk_Sim\\CodeInlog\\accounts\\templates\\test||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:CodeInlog\\accounts\\templates\\test||{8B382828-6202-11D1-8870-0000F87579D2}"
-=======
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\HelpDesk_Sim\\HelpDesk_Sim\\chatbot\\templates\\chatbot\\chatlog.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:HelpDesk_Sim\\chatbot\\templates\\chatbot\\chatlog.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\HelpDesk_Sim\\HelpDesk_Sim\\chatbot\\tests.py||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:HelpDesk_Sim\\chatbot\\tests.py||{3B902123-F8A7-4915-9F01-361F908088D0}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\HelpDesk_Sim\\HelpDesk_Sim\\chatbot\\views.py||{3B902123-F8A7-4915-9F01-361F908088D0}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:HelpDesk_Sim\\chatbot\\views.py||{3B902123-F8A7-4915-9F01-361F908088D0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\HelpDesk_Sim\\HelpDesk_Sim\\accounts\\models.py||{3B902123-F8A7-4915-9F01-361F908088D0}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:HelpDesk_Sim\\accounts\\models.py||{3B902123-F8A7-4915-9F01-361F908088D0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\HelpDesk_Sim\\HelpDesk_Sim\\accounts\\views.py||{3B902123-F8A7-4915-9F01-361F908088D0}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:HelpDesk_Sim\\accounts\\views.py||{3B902123-F8A7-4915-9F01-361F908088D0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\HelpDesk_Sim\\HelpDesk_Sim\\chatbot\\urls.py||{3B902123-F8A7-4915-9F01-361F908088D0}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:HelpDesk_Sim\\chatbot\\urls.py||{3B902123-F8A7-4915-9F01-361F908088D0}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\HelpDesk_Sim\\HelpDesk_Sim\\chatbot\\templates\\chatbot\\403.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:HelpDesk_Sim\\chatbot\\templates\\chatbot\\403.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\HelpDesk_Sim\\HelpDesk_Sim\\accounts\\templates\\accounts\\home.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:HelpDesk_Sim\\accounts\\templates\\accounts\\home.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\HelpDesk_Sim\\HelpDesk_Sim\\accounts\\admin.py||{3B902123-F8A7-4915-9F01-361F908088D0}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:HelpDesk_Sim\\accounts\\admin.py||{3B902123-F8A7-4915-9F01-361F908088D0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\HelpDesk_Sim\\HelpDesk_Sim\\chatbot\\admin.py||{3B902123-F8A7-4915-9F01-361F908088D0}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:HelpDesk_Sim\\chatbot\\admin.py||{3B902123-F8A7-4915-9F01-361F908088D0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\HelpDesk_Sim\\HelpDesk_Sim\\chatbot\\apps.py||{3B902123-F8A7-4915-9F01-361F908088D0}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:HelpDesk_Sim\\chatbot\\apps.py||{3B902123-F8A7-4915-9F01-361F908088D0}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\HelpDesk_Sim\\HelpDesk_Sim\\chatbot\\models.py||{3B902123-F8A7-4915-9F01-361F908088D0}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:HelpDesk_Sim\\chatbot\\models.py||{3B902123-F8A7-4915-9F01-361F908088D0}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\HelpDesk_Sim\\HelpDesk_Sim\\chatbot\\templates\\chatbot\\chatlog.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:HelpDesk_Sim\\chatbot\\templates\\chatbot\\chatlog.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\HelpDesk_Sim\\HelpDesk_Sim\\chatbot\\templates\\chatbot\\index.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:HelpDesk_Sim\\chatbot\\templates\\chatbot\\index.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
->>>>>>> Stashed changes
     }
   ],
   "DocumentGroupContainers": [
@@ -131,11 +38,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-<<<<<<< Updated upstream
           "SelectedChildIndex": 3,
-=======
-          "SelectedChildIndex": 11,
->>>>>>> Stashed changes
           "Children": [
             {
               "$type": "Bookmark",
@@ -147,191 +50,33 @@
             },
             {
               "$type": "Document",
-<<<<<<< Updated upstream
-              "DocumentIndex": 6,
-              "Title": "index.html",
-              "DocumentMoniker": "C:\\HelpDesk_Sim\\chatbot_project\\chatbot\\templates\\chatbot\\index.html",
-              "RelativeDocumentMoniker": "chatbot_project\\chatbot\\templates\\chatbot\\index.html",
-              "ToolTip": "C:\\HelpDesk_Sim\\chatbot_project\\chatbot\\templates\\chatbot\\index.html",
-              "RelativeToolTip": "chatbot_project\\chatbot\\templates\\chatbot\\index.html",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 2,
+              "Title": "403.html",
+              "DocumentMoniker": "C:\\HelpDesk_Sim\\HelpDesk_Sim\\chatbot\\templates\\chatbot\\403.html",
+              "RelativeDocumentMoniker": "HelpDesk_Sim\\chatbot\\templates\\chatbot\\403.html",
+              "ToolTip": "C:\\HelpDesk_Sim\\HelpDesk_Sim\\chatbot\\templates\\chatbot\\403.html",
+              "RelativeToolTip": "HelpDesk_Sim\\chatbot\\templates\\chatbot\\403.html",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACEAAAAHAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
-              "WhenOpened": "2026-06-10T09:20:02.897Z"
+              "WhenOpened": "2026-06-30T10:28:08.251Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "urls.py",
-              "DocumentMoniker": "C:\\HelpDesk_Sim\\chatbot_project\\chatbot\\urls.py",
-              "RelativeDocumentMoniker": "chatbot_project\\chatbot\\urls.py",
-              "ToolTip": "C:\\HelpDesk_Sim\\chatbot_project\\chatbot\\urls.py",
-              "RelativeToolTip": "chatbot_project\\chatbot\\urls.py",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAA8AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
-              "WhenOpened": "2026-06-10T09:05:08.135Z",
-=======
-              "DocumentIndex": 3,
-              "Title": "views.py",
-              "DocumentMoniker": "C:\\HelpDesk_Sim\\HelpDesk_Sim\\accounts\\views.py",
-              "RelativeDocumentMoniker": "HelpDesk_Sim\\accounts\\views.py",
-              "ToolTip": "C:\\HelpDesk_Sim\\HelpDesk_Sim\\accounts\\views.py",
-              "RelativeToolTip": "HelpDesk_Sim\\accounts\\views.py",
-              "ViewState": "AgIAAJYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
-              "WhenOpened": "2026-06-29T10:53:39.271Z",
->>>>>>> Stashed changes
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-<<<<<<< Updated upstream
               "Title": "tests.py",
-              "DocumentMoniker": "C:\\HelpDesk_Sim\\chatbot_project\\chatbot\\tests.py",
-              "RelativeDocumentMoniker": "chatbot_project\\chatbot\\tests.py",
-              "ToolTip": "C:\\HelpDesk_Sim\\chatbot_project\\chatbot\\tests.py",
-              "RelativeToolTip": "chatbot_project\\chatbot\\tests.py",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "DocumentMoniker": "C:\\HelpDesk_Sim\\HelpDesk_Sim\\chatbot\\tests.py",
+              "RelativeDocumentMoniker": "HelpDesk_Sim\\chatbot\\tests.py",
+              "ToolTip": "C:\\HelpDesk_Sim\\HelpDesk_Sim\\chatbot\\tests.py",
+              "RelativeToolTip": "HelpDesk_Sim\\chatbot\\tests.py",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACcAAABSAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
-              "WhenOpened": "2026-06-10T09:05:07.127Z",
+              "WhenOpened": "2026-06-30T10:22:28.201Z",
               "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "admin.py",
-              "DocumentMoniker": "C:\\HelpDesk_Sim\\chatbot_project\\chatbot\\admin.py",
-              "RelativeDocumentMoniker": "chatbot_project\\chatbot\\admin.py",
-              "ToolTip": "C:\\HelpDesk_Sim\\chatbot_project\\chatbot\\admin.py",
-              "RelativeToolTip": "chatbot_project\\chatbot\\admin.py",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
-              "WhenOpened": "2026-06-10T09:05:03.895Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "views.py",
-              "DocumentMoniker": "C:\\HelpDesk_Sim\\chatbot_project\\chatbot\\views.py",
-              "RelativeDocumentMoniker": "chatbot_project\\chatbot\\views.py",
-              "ToolTip": "C:\\HelpDesk_Sim\\chatbot_project\\chatbot\\views.py",
-              "RelativeToolTip": "chatbot_project\\chatbot\\views.py",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAdAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
-              "WhenOpened": "2026-06-10T09:04:47.054Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "apps.py",
-              "DocumentMoniker": "C:\\HelpDesk_Sim\\chatbot_project\\chatbot\\apps.py",
-              "RelativeDocumentMoniker": "chatbot_project\\chatbot\\apps.py",
-              "ToolTip": "C:\\HelpDesk_Sim\\chatbot_project\\chatbot\\apps.py",
-              "RelativeToolTip": "chatbot_project\\chatbot\\apps.py",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
-              "WhenOpened": "2026-06-10T09:04:44.364Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
-              "Title": "models.py",
-              "DocumentMoniker": "C:\\HelpDesk_Sim\\chatbot_project\\chatbot\\models.py",
-              "RelativeDocumentMoniker": "chatbot_project\\chatbot\\models.py",
-              "ToolTip": "C:\\HelpDesk_Sim\\chatbot_project\\chatbot\\models.py",
-              "RelativeToolTip": "chatbot_project\\chatbot\\models.py",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAcAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
-              "WhenOpened": "2026-06-10T09:04:38.026Z",
-=======
-              "Title": "models.py",
-              "DocumentMoniker": "C:\\HelpDesk_Sim\\HelpDesk_Sim\\accounts\\models.py",
-              "RelativeDocumentMoniker": "HelpDesk_Sim\\accounts\\models.py",
-              "ToolTip": "C:\\HelpDesk_Sim\\HelpDesk_Sim\\accounts\\models.py",
-              "RelativeToolTip": "HelpDesk_Sim\\accounts\\models.py",
-              "ViewState": "AgIAAB8AAAAAAAAAAAAUwD4AAAAnAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
-              "WhenOpened": "2026-06-29T10:52:33.485Z",
->>>>>>> Stashed changes
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-<<<<<<< Updated upstream
-              "Title": "settings.py",
-              "DocumentMoniker": "C:\\HelpDesk_Sim\\chatbot_project\\config\\settings.py",
-              "RelativeDocumentMoniker": "chatbot_project\\config\\settings.py",
-              "ToolTip": "C:\\HelpDesk_Sim\\chatbot_project\\config\\settings.py",
-              "RelativeToolTip": "chatbot_project\\config\\settings.py",
-              "ViewState": "AgIAACEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
-              "WhenOpened": "2026-06-10T09:04:29.777Z",
-=======
-              "Title": "home.html",
-              "DocumentMoniker": "C:\\HelpDesk_Sim\\HelpDesk_Sim\\accounts\\templates\\accounts\\home.html",
-              "RelativeDocumentMoniker": "HelpDesk_Sim\\accounts\\templates\\accounts\\home.html",
-              "ToolTip": "C:\\HelpDesk_Sim\\HelpDesk_Sim\\accounts\\templates\\accounts\\home.html",
-              "RelativeToolTip": "HelpDesk_Sim\\accounts\\templates\\accounts\\home.html",
-              "ViewState": "AgIAAKoAAAAAAAAAAAAUwMsAAAAWAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
-              "WhenOpened": "2026-06-29T10:29:58.59Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "admin.py",
-              "DocumentMoniker": "C:\\HelpDesk_Sim\\HelpDesk_Sim\\accounts\\admin.py",
-              "RelativeDocumentMoniker": "HelpDesk_Sim\\accounts\\admin.py",
-              "ToolTip": "C:\\HelpDesk_Sim\\HelpDesk_Sim\\accounts\\admin.py",
-              "RelativeToolTip": "HelpDesk_Sim\\accounts\\admin.py",
-              "ViewState": "AgIAAKgAAAAAAAAAAAAUwNEAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
-              "WhenOpened": "2026-06-29T10:28:54.196Z",
->>>>>>> Stashed changes
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-<<<<<<< Updated upstream
-              "Title": "manage.py",
-              "DocumentMoniker": "C:\\HelpDesk_Sim\\chatbot_project\\manage.py",
-              "RelativeDocumentMoniker": "chatbot_project\\manage.py",
-              "ToolTip": "C:\\HelpDesk_Sim\\chatbot_project\\manage.py",
-              "RelativeToolTip": "chatbot_project\\manage.py",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
-              "WhenOpened": "2026-06-10T09:04:22.216Z"
-=======
-              "Title": "admin.py",
-              "DocumentMoniker": "C:\\HelpDesk_Sim\\HelpDesk_Sim\\chatbot\\admin.py",
-              "RelativeDocumentMoniker": "HelpDesk_Sim\\chatbot\\admin.py",
-              "ToolTip": "C:\\HelpDesk_Sim\\HelpDesk_Sim\\chatbot\\admin.py",
-              "RelativeToolTip": "HelpDesk_Sim\\chatbot\\admin.py",
-              "ViewState": "AgIAABsAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
-              "WhenOpened": "2026-06-29T10:28:37.194Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "apps.py",
-              "DocumentMoniker": "C:\\HelpDesk_Sim\\HelpDesk_Sim\\chatbot\\apps.py",
-              "RelativeDocumentMoniker": "HelpDesk_Sim\\chatbot\\apps.py",
-              "ToolTip": "C:\\HelpDesk_Sim\\HelpDesk_Sim\\chatbot\\apps.py",
-              "RelativeToolTip": "HelpDesk_Sim\\chatbot\\apps.py",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
-              "WhenOpened": "2026-06-29T10:28:36.65Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
               "Title": "models.py",
               "DocumentMoniker": "C:\\HelpDesk_Sim\\HelpDesk_Sim\\chatbot\\models.py",
               "RelativeDocumentMoniker": "HelpDesk_Sim\\chatbot\\models.py",
@@ -339,169 +84,25 @@
               "RelativeToolTip": "HelpDesk_Sim\\chatbot\\models.py",
               "ViewState": "AgIAABEAAAAAAAAAAAAUwDoAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
-              "WhenOpened": "2026-06-29T10:28:16.332Z",
+              "WhenOpened": "2026-06-30T10:03:32.713Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "urls.py",
-              "DocumentMoniker": "C:\\HelpDesk_Sim\\HelpDesk_Sim\\chatbot\\urls.py",
-              "RelativeDocumentMoniker": "HelpDesk_Sim\\chatbot\\urls.py",
-              "ToolTip": "C:\\HelpDesk_Sim\\HelpDesk_Sim\\chatbot\\urls.py",
-              "RelativeToolTip": "HelpDesk_Sim\\chatbot\\urls.py",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAABdAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
-              "WhenOpened": "2026-06-29T10:27:32.938Z",
-              "EditorCaption": ""
->>>>>>> Stashed changes
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-<<<<<<< Updated upstream
-              "Title": "models.py",
-              "DocumentMoniker": "C:\\HelpDesk_Sim\\CodeInlog\\accounts\\models.py",
-              "RelativeDocumentMoniker": "CodeInlog\\accounts\\models.py",
-              "ToolTip": "C:\\HelpDesk_Sim\\CodeInlog\\accounts\\models.py",
-              "RelativeToolTip": "CodeInlog\\accounts\\models.py",
-              "ViewState": "AgIAABUAAAAAAAAAAAAAABoAAAAdAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
-              "WhenOpened": "2026-06-09T09:35:31.806Z",
-=======
-              "Title": "views.py",
-              "DocumentMoniker": "C:\\HelpDesk_Sim\\HelpDesk_Sim\\chatbot\\views.py",
-              "RelativeDocumentMoniker": "HelpDesk_Sim\\chatbot\\views.py",
-              "ToolTip": "C:\\HelpDesk_Sim\\HelpDesk_Sim\\chatbot\\views.py",
-              "RelativeToolTip": "HelpDesk_Sim\\chatbot\\views.py",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAsAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
-              "WhenOpened": "2026-06-29T10:27:17.811Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "chatlog.html",
-              "DocumentMoniker": "C:\\HelpDesk_Sim\\HelpDesk_Sim\\chatbot\\templates\\chatbot\\chatlog.html",
-              "RelativeDocumentMoniker": "HelpDesk_Sim\\chatbot\\templates\\chatbot\\chatlog.html",
-              "ToolTip": "C:\\HelpDesk_Sim\\HelpDesk_Sim\\chatbot\\templates\\chatbot\\chatlog.html",
-              "RelativeToolTip": "HelpDesk_Sim\\chatbot\\templates\\chatbot\\chatlog.html",
-              "ViewState": "AgIAAFcAAAAAAAAAAAAAAHwAAAAOAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
-              "WhenOpened": "2026-06-29T10:27:01.463Z",
->>>>>>> Stashed changes
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-<<<<<<< Updated upstream
-              "Title": "views.py",
-              "DocumentMoniker": "C:\\HelpDesk_Sim\\CodeInlog\\accounts\\views.py",
-              "RelativeDocumentMoniker": "CodeInlog\\accounts\\views.py",
-              "ToolTip": "C:\\HelpDesk_Sim\\CodeInlog\\accounts\\views.py",
-              "RelativeToolTip": "CodeInlog\\accounts\\views.py",
-              "ViewState": "AgIAAGAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
-              "WhenOpened": "2026-06-09T09:15:32.491Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "tests.py",
-              "DocumentMoniker": "C:\\HelpDesk_Sim\\CodeInlog\\accounts\\tests.py",
-              "RelativeDocumentMoniker": "CodeInlog\\accounts\\tests.py",
-              "ToolTip": "C:\\HelpDesk_Sim\\CodeInlog\\accounts\\tests.py",
-              "RelativeToolTip": "CodeInlog\\accounts\\tests.py",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
-              "WhenOpened": "2026-06-09T09:14:53.993Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "forms.py",
-              "DocumentMoniker": "C:\\HelpDesk_Sim\\CodeInlog\\accounts\\forms.py",
-              "RelativeDocumentMoniker": "CodeInlog\\accounts\\forms.py",
-              "ToolTip": "C:\\HelpDesk_Sim\\CodeInlog\\accounts\\forms.py",
-              "RelativeToolTip": "CodeInlog\\accounts\\forms.py",
-              "ViewState": "AgIAAJMAAAAAAAAAAAAAAEoAAABYAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
-              "WhenOpened": "2026-06-09T09:14:32.674Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "apps.py",
-              "DocumentMoniker": "C:\\HelpDesk_Sim\\CodeInlog\\accounts\\apps.py",
-              "RelativeDocumentMoniker": "CodeInlog\\accounts\\apps.py",
-              "ToolTip": "C:\\HelpDesk_Sim\\CodeInlog\\accounts\\apps.py",
-              "RelativeToolTip": "CodeInlog\\accounts\\apps.py",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
-              "WhenOpened": "2026-06-09T09:14:28.298Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "role_utils.py",
-              "DocumentMoniker": "C:\\HelpDesk_Sim\\CodeInlog\\accounts\\role_utils.py",
-              "RelativeDocumentMoniker": "CodeInlog\\accounts\\role_utils.py",
-              "ToolTip": "C:\\HelpDesk_Sim\\CodeInlog\\accounts\\role_utils.py",
-              "RelativeToolTip": "CodeInlog\\accounts\\role_utils.py",
-              "ViewState": "AgIAAEgAAAAAAAAAAAAAACQAAABhAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
-              "WhenOpened": "2026-06-09T07:44:02.035Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 3,
               "Title": "home.html",
-              "DocumentMoniker": "C:\\HelpDesk_Sim\\CodeInlog\\accounts\\templates\\accounts\\home.html",
-              "RelativeDocumentMoniker": "CodeInlog\\accounts\\templates\\accounts\\home.html",
-              "ToolTip": "C:\\HelpDesk_Sim\\CodeInlog\\accounts\\templates\\accounts\\home.html",
-              "RelativeToolTip": "CodeInlog\\accounts\\templates\\accounts\\home.html",
-              "ViewState": "AgIAAC0AAAAAAAAAAAAAAKAAAAAfAAAAAAAAAA==",
+              "DocumentMoniker": "C:\\HelpDesk_Sim\\HelpDesk_Sim\\accounts\\templates\\accounts\\home.html",
+              "RelativeDocumentMoniker": "HelpDesk_Sim\\accounts\\templates\\accounts\\home.html",
+              "ToolTip": "C:\\HelpDesk_Sim\\HelpDesk_Sim\\accounts\\templates\\accounts\\home.html",
+              "RelativeToolTip": "HelpDesk_Sim\\accounts\\templates\\accounts\\home.html",
+              "ViewState": "AgIAAKYAAAAAAAAAAAAUwLQAAAA2AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
-              "WhenOpened": "2026-06-08T09:44:54.342Z"
+              "WhenOpened": "2026-06-30T09:53:36.193Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
-              "Title": "test",
-              "DocumentMoniker": "C:\\HelpDesk_Sim\\CodeInlog\\accounts\\templates\\test",
-              "RelativeDocumentMoniker": "CodeInlog\\accounts\\templates\\test",
-              "ToolTip": "C:\\HelpDesk_Sim\\CodeInlog\\accounts\\templates\\test",
-              "RelativeToolTip": "CodeInlog\\accounts\\templates\\test",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2026-06-08T09:44:51.992Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "urls.py",
-              "DocumentMoniker": "C:\\HelpDesk_Sim\\CodeInlog\\accounts\\urls.py",
-              "RelativeDocumentMoniker": "CodeInlog\\accounts\\urls.py",
-              "ToolTip": "C:\\HelpDesk_Sim\\CodeInlog\\accounts\\urls.py",
-              "RelativeToolTip": "CodeInlog\\accounts\\urls.py",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
-              "WhenOpened": "2026-06-08T09:44:34.634Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 16,
-              "Title": "admin.py",
-              "DocumentMoniker": "C:\\HelpDesk_Sim\\CodeInlog\\accounts\\admin.py",
-              "RelativeDocumentMoniker": "CodeInlog\\accounts\\admin.py",
-              "ToolTip": "C:\\HelpDesk_Sim\\CodeInlog\\accounts\\admin.py",
-              "RelativeToolTip": "CodeInlog\\accounts\\admin.py",
-              "ViewState": "AgIAAFcAAAAAAAAAAAAAAB8AAAAoAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
-              "WhenOpened": "2026-06-08T09:43:32.541Z"
-=======
+              "DocumentIndex": 6,
               "Title": "index.html",
               "DocumentMoniker": "C:\\HelpDesk_Sim\\HelpDesk_Sim\\chatbot\\templates\\chatbot\\index.html",
               "RelativeDocumentMoniker": "HelpDesk_Sim\\chatbot\\templates\\chatbot\\index.html",
@@ -509,9 +110,34 @@
               "RelativeToolTip": "HelpDesk_Sim\\chatbot\\templates\\chatbot\\index.html",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
-              "WhenOpened": "2026-06-29T10:26:38.027Z",
+              "WhenOpened": "2026-06-30T09:53:26.075Z",
               "EditorCaption": ""
->>>>>>> Stashed changes
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "chatlog.html",
+              "DocumentMoniker": "C:\\HelpDesk_Sim\\HelpDesk_Sim\\chatbot\\templates\\chatbot\\chatlog.html",
+              "RelativeDocumentMoniker": "HelpDesk_Sim\\chatbot\\templates\\chatbot\\chatlog.html",
+              "ToolTip": "C:\\HelpDesk_Sim\\HelpDesk_Sim\\chatbot\\templates\\chatbot\\chatlog.html",
+              "RelativeToolTip": "HelpDesk_Sim\\chatbot\\templates\\chatbot\\chatlog.html",
+              "ViewState": "AgIAAFcAAAAAAAAAAAAUwIAAAAAHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2026-06-30T09:53:15.986Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "views.py",
+              "DocumentMoniker": "C:\\HelpDesk_Sim\\HelpDesk_Sim\\chatbot\\views.py",
+              "RelativeDocumentMoniker": "HelpDesk_Sim\\chatbot\\views.py",
+              "ToolTip": "C:\\HelpDesk_Sim\\HelpDesk_Sim\\chatbot\\views.py",
+              "RelativeToolTip": "HelpDesk_Sim\\chatbot\\views.py",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
+              "WhenOpened": "2026-06-30T09:46:47.811Z",
+              "EditorCaption": ""
             }
           ]
         }
