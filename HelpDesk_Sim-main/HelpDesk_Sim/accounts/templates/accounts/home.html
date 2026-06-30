@@ -1,0 +1,85 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HelpDesk</title>
+    <link rel="stylesheet" href="{% static 'accounts/css/home.css' %}">
+</head>
+<body>
+    <div class="topbar">
+        <span>HelpDesk</span>
+    </div>
+
+    <div class="page-content">
+        <section class="hero">
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="notice">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+
+            {% if user.is_authenticated %}
+                <h1>Welkom terug</h1>
+                <p class="subtitle">
+                    Je bent succesvol ingelogd en kunt nu verder in HelpDesk.
+                </p>
+                <p class="meta">
+                    Ingelogd als <strong>{{ user.get_full_name|default:user.email }}</strong>{% if role %} • Rol: <strong>{{ role }}</strong>{% endif %}
+                </p>
+
+                {% if role == "Docent" %}
+                    <section class="teacher-section">
+                        <h2>Mijn klas</h2>
+                        {% if teacher_class %}
+                            <p class="meta">Je bent docent van <strong>{{ teacher_class.name }}</strong>.</p>
+                            <div class="cta-group">
+                                <a class="btn-primary" href="{% url 'class_detail' teacher_class.pk %}">Bekijk mijn klas</a>
+                                <a class="btn-secondary" href="{% url 'teacher_student_management' %}">Studenten beheren</a>
+                            </div>
+                        {% else %}
+                            <p class="meta">Je bent nog niet aan een klas gekoppeld. Neem contact op met een administrator.</p>
+                            <div class="cta-group">
+                                <a class="btn-primary" href="{% url 'teacher_student_management' %}">Studenten beheren</a>
+                            </div>
+                        {% endif %}
+                    </section>
+                {% endif %}
+
+                <div class="cta-group">
+                    {% if user.is_staff %}
+                        <a class="btn-secondary" href="/admin/">Admin panel</a>
+                    {% endif %}
+                    <a class="btn-primary" href="{% url 'logout' %}">Uitloggen</a>
+                </div>
+            {% else %}
+                <h1>Welkom bij HelpDesk</h1>
+                <p class="subtitle">
+                    De helpdesk chatbot helpt je snel antwoord te vinden op veelgestelde vragen.
+                    Log in of maak een account aan om te beginnen.
+                </p>
+                <div class="cta-group">
+                    <a class="btn-primary" href="{% url 'login' %}">Inloggen</a>
+                    <a class="btn-secondary" href="{% url 'register' %}">Account maken</a>
+                </div>
+            {% endif %}
+        </section>
+
+        <section class="features">
+            <article class="feature-card">
+                <h2>Snel antwoord</h2>
+                <p>Stel je vraag en krijg direct hulp van de chatbot, zonder lang te wachten.</p>
+            </article>
+            <article class="feature-card">
+                <h2>24/7 beschikbaar</h2>
+                <p>De helpdesk is altijd bereikbaar wanneer je hulp nodig hebt.</p>
+            </article>
+            <article class="feature-card">
+                <h2>Eenvoudig inloggen</h2>
+                <p>Met je account heb je toegang tot alle functies van de helpdesk.</p>
+            </article>
+        </section>
+    </div>
+</body>
+</html>

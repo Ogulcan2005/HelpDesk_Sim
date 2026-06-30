@@ -1,0 +1,103 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ group.name }} - HelpDesk</title>
+    <link rel="stylesheet" href="{% static 'accounts/css/class_detail.css' %}">
+</head>
+<body>
+    <div class="topbar">
+        <span>HelpDesk</span>
+    </div>
+
+    <div class="page-content">
+        <a class="back-link" href="{% url 'home' %}">← Terug naar home</a>
+
+        <section class="card">
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="notice">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+
+            <h1>{{ group.name }}</h1>
+            <p class="subtitle">
+                {% if teacher %}
+                    Docent: <strong>{{ teacher.full_name }}</strong>
+                {% else %}
+                    Deze klas heeft nog geen docent.
+                {% endif %}
+            </p>
+
+            <h2>Studenten ({{ students|length }})</h2>
+
+            {% if students %}
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Voornaam</th>
+                            <th>Achternaam</th>
+                            <th>E-mail</th>
+                            {% if can_add_students %}
+                                <th>Acties</th>
+                            {% endif %}
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for student in students %}
+                            <tr>
+                                <td>{{ student.first_name }}</td>
+                                <td>{{ student.last_name }}</td>
+                                <td>{% if student.user %}{{ student.user.email }}{% else %}—{% endif %}</td>
+                                {% if can_add_students %}
+                                    <td class="actions-cell">
+                                        <form method="post" onsubmit="return confirm('Weet je zeker dat je {{ student.full_name }} uit deze klas wilt verwijderen? Het account blijft bestaan.');">
+                                            {% csrf_token %}
+                                            <input type="hidden" name="remove_student" value="{{ student.pk }}">
+                                            <button class="btn-remove" type="submit">Verwijderen</button>
+                                        </form>
+                                    </td>
+                                {% endif %}
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            {% else %}
+                <p class="empty-state">Er zijn nog geen studenten in deze klas.</p>
+            {% endif %}
+        </section>
+
+        {% if can_add_students %}
+            <section class="card">
+                <h2>Student toevoegen</h2>
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="{{ add_form.first_name.id_for_label }}">{{ add_form.first_name.label }}</label>
+                        {{ add_form.first_name }}
+                        {{ add_form.first_name.errors }}
+                    </div>
+                    <div class="form-group">
+                        <label for="{{ add_form.last_name.id_for_label }}">{{ add_form.last_name.label }}</label>
+                        {{ add_form.last_name }}
+                        {{ add_form.last_name.errors }}
+                    </div>
+                    <div class="form-group">
+                        <label for="{{ add_form.email.id_for_label }}">{{ add_form.email.label }}</label>
+                        {{ add_form.email }}
+                        {{ add_form.email.errors }}
+                    </div>
+                    <div class="form-group">
+                        <label for="{{ add_form.password.id_for_label }}">{{ add_form.password.label }}</label>
+                        {{ add_form.password }}
+                        {{ add_form.password.errors }}
+                    </div>
+                    <button class="btn-primary" type="submit">Student toevoegen</button>
+                </form>
+            </section>
+        {% endif %}
+    </div>
+</body>
+</html>

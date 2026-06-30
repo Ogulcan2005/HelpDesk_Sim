@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Helpdesk Simulatie</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 600px; margin: 40px auto; }
+        #chat { border: 1px solid #ccc; padding: 10px; height: 400px; overflow-y: auto; margin-bottom: 10px; }
+        .msg { margin: 6px 0; padding: 8px 12px; border-radius: 8px; max-width: 80%; }
+        .klant { background: #f1f1f1; text-align: left; }
+        .student { background: #d2e7ff; text-align: right; margin-left: auto; }
+        .systeem { background: #fff3cd; font-style: italic; text-align: center; max-width: 100%; }
+        #controls { display: flex; gap: 8px; }
+        #question { flex: 1; padding: 8px; }
+    </style>
+</head>
+<body>
+    <h1>Helpdesk Simulatie</h1>
+    <p>Je bent de helpdeskmedewerker. De klant belt met een probleem - stel vragen om erachter te komen wat er mis is.</p>
+
+    <div id="chat"></div>
+
+    <div id="controls">
+        <input type="text" id="question" placeholder="Typ je reactie naar de klant...">
+        <button onclick="sendQuestion()">Versturen</button>
+        <button onclick="startNewChat()">Nieuw gesprek</button>
+    </div>
+
+    <script>
+    const chatBox = document.getElementById("chat");
+
+    function addMessage(text, sender) {
+        // Voegt een chatbericht toe aan het scherm.
+        // 'sender' bepaalt de stijl: 'klant', 'student' of 'systeem'.
+        const div = document.createElement("div");
+        div.className = "msg " + sender;
+        div.innerText = text;
+        chatBox.appendChild(div);
+        chatBox.scrollTop = chatBox.scrollHeight;
+    }
+
+    function startNewChat() {
+        // Begint een nieuw gesprek: leegt het scherm en vraagt de
+        // server om een nieuw scenario te kiezen en de klant het
+        // probleem te laten uitleggen.
+        chatBox.innerHTML = "";
+        addMessage("Nieuw gesprek wordt gestart...", "systeem");
+
+        fetch("reset/")
+            .then(() => fetch("start/"))
+            .then(res => res.json())
+            .then(data => {
+                chatBox.innerHTML = "";
+                addMessage(data.answer, "klant");
+            });
+    }
+
+    function sendQuestion() {
+        // Stuurt de reactie van de student naar de server en toont
+        // zowel die reactie als het antwoord van de klant in de chat.
+        const input = document.getElementById("question");
+        const question = input.value.trim();
+        if (!question) return;
+
+        addMessage(question, "student");
+        input.value = "";
+
+        fetch(`ask/?question=${encodeURIComponent(question)}`)
+            .then(res => res.json())
+            .then(data => {
+                addMessage(data.answer, "klant");
+            });
+    }
+
+    // Druk op Enter om te versturen, niet alleen op de knop klikken.
+    document.getElementById("question").addEventListener("keydown", function(e) {
+        if (e.key === "Enter") {
+            sendQuestion();
+        }
+    });
+
+    // Start automatisch een gesprek zodra de pagina geladen wordt.
+    window.onload = startNewChat;
+    </script>
+</body>
+</html>

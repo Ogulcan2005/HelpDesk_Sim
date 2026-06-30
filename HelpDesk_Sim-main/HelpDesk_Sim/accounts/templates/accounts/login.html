@@ -1,0 +1,42 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inloggen - HelpDesk</title>
+    <link rel="stylesheet" href="{% static 'accounts/css/login.css' %}">
+</head>
+<body>
+    <div class="topbar">
+        <span>HelpDesk</span>
+    </div>
+    <div class="page-content">
+        <main class="login-card">
+            <h1>Inloggen</h1>
+            <p class="subtitle">Log in om de helpdesk chatbot te gebruiken.</p>
+
+            {% if error %}
+                <div class="error">{{ error }}</div>
+            {% endif %}
+
+            <form method="post">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="email">E-mailadres</label>
+                    <input type="email" id="email" name="email" placeholder="Vul je e-mailadres in" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Wachtwoord</label>
+                    <input type="password" id="password" name="password" placeholder="Vul je wachtwoord in" required>
+                </div>
+                <div class="forgot-password">
+                    <a href="{% url 'reset_password' %}">Wachtwoord vergeten?</a>
+                </div>
+                <button type="submit">Inloggen</button>
+                <a class="secondary-button" href="{% url 'register' %}">Account maken</a>
+            </form>
+        </main>
+    </div>
+</body>
+</html>

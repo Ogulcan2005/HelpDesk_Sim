@@ -1,0 +1,220 @@
+:root {
+    --brand: #007d84;
+    --brand-dark: #00676d;
+    --bg: #eef2f6;
+    --text: #1f2933;
+    --muted: #5b6770;
+    --card: #ffffff;
+    --border: #c8d2db;
+    --danger: #c62828;
+    --danger-dark: #a31f1f;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 80px 20px 40px;
+    font-family: Arial, Helvetica, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+}
+
+body::before {
+    content: "HelpDesk";
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 56px;
+    background: var(--brand);
+    color: white;
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+    font-size: 20px;
+    font-weight: bold;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
+    z-index: 100;
+}
+
+.page-wrap {
+    max-width: 960px;
+    margin: 0 auto;
+}
+
+.back-link {
+    display: inline-block;
+    color: var(--brand);
+    text-decoration: none;
+    font-weight: bold;
+    margin-bottom: 16px;
+}
+
+.back-link:hover {
+    text-decoration: underline;
+}
+
+.messages {
+    margin-bottom: 20px;
+}
+
+.messages p {
+    margin: 0 0 8px;
+    padding: 12px 16px;
+    border-radius: 8px;
+    background: #e8f5e9;
+    color: #1b5e20;
+    border: 1px solid #a5d6a7;
+}
+
+.page-header h2 {
+    margin: 0 0 8px;
+    font-size: 28px;
+}
+
+.page-header p {
+    margin: 0 0 24px;
+    color: var(--muted);
+}
+
+.card {
+    background: var(--card);
+    padding: 28px 30px;
+    border-radius: 14px;
+    box-shadow: 0 14px 30px rgba(17, 24, 39, 0.12);
+    margin-bottom: 28px;
+}
+
+.card h3 {
+    margin: 0 0 20px;
+    font-size: 20px;
+}
+
+.card form p {
+    margin-bottom: 18px;
+}
+
+label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: bold;
+}
+
+input,
+select {
+    width: 100%;
+    max-width: 420px;
+    padding: 12px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    font-size: 15px;
+    transition: 0.2s;
+}
+
+input:focus,
+select:focus {
+    outline: none;
+    border-color: var(--brand);
+    box-shadow: 0 0 0 3px rgba(0, 125, 132, 0.15);
+}
+
+.errorlist {
+    list-style: none;
+    padding: 0;
+    margin: 6px 0 0;
+    color: var(--danger);
+    font-size: 14px;
+}
+
+.btn-primary {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    background: var(--brand);
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.btn-primary:hover {
+    background: var(--brand-dark);
+}
+
+.students-table-wrap {
+    overflow-x: auto;
+}
+
+.students-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 15px;
+}
+
+.students-table th,
+.students-table td {
+    padding: 12px 14px;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+}
+
+.students-table th {
+    background: #f4f7f9;
+    font-weight: bold;
+    color: var(--muted);
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+}
+
+.students-table tbody tr:hover {
+    background: #f9fbfc;
+}
+
+.students-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.actions-cell {
+    white-space: nowrap;
+}
+
+.actions-cell a {
+    color: var(--brand);
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.actions-cell a:hover {
+    text-decoration: underline;
+}
+
+.actions-cell form {
+    display: inline;
+}
+
+.btn-danger {
+    padding: 6px 12px;
+    border: none;
+    border-radius: 6px;
+    background: transparent;
+    color: var(--danger);
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.btn-danger:hover {
+    background: #ffebee;
+    color: var(--danger-dark);
+}
+
+.empty-state {
+    margin: 0;
+    color: var(--muted);
+}
