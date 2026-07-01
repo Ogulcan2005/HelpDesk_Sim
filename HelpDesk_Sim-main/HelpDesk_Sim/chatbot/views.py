@@ -7,7 +7,7 @@ from .models import QuestionAnswer
 # URL van de lokale Ollama-server (chat-endpoint, geschikt voor gesprekken
 # met geschiedenis, in tegenstelling tot /api/generate dat los van context werkt).
 OLLAMA_CHAT_URL = "http://localhost:11434/api/chat"
-OLLAMA_MODEL = "jobautomation/openeurollm-dutch"
+OLLAMA_MODEL = "jobautomation/openeurollm-dutch:latest"
 
 # Voorbeeldscenario's. Elk scenario is het probleem dat de "klant" (Phi3)
 # heeft. De student weet dit nog niet en moet het via vragen achterhalen.
