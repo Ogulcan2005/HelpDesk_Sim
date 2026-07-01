@@ -2,15 +2,13 @@
   "ExpandedNodes": [
     "",
     "\\HelpDesk_Sim",
-    "\\HelpDesk_Sim\\accounts",
     "\\HelpDesk_Sim\\accounts\\migrations",
     "\\HelpDesk_Sim\\accounts\\templates",
     "\\HelpDesk_Sim\\accounts\\templates\\accounts",
     "\\HelpDesk_Sim\\accounts\\__pycache__",
-    "\\HelpDesk_Sim\\chatbot",
     "\\HelpDesk_Sim\\chatbot\\templates",
     "\\HelpDesk_Sim\\templates"
   ],
-  "SelectedNode": "\\HelpDesk_Sim\\accounts\\templates\\accounts\\home.html",
+  "SelectedNode": "\\HelpDesk_Sim",
   "PreviewInSolutionExplorer": false
 }
