@@ -1,0 +1,129 @@
+﻿<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Log | {{ target_user.username }}</title>
+    <style>
+        :root {
+            --brand: #007d84;
+            --bg: #eef2f6;
+            --text: #1f2933;
+            --card: #ffffff;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            padding: 20px;
+            margin: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .card {
+            background: var(--card);
+            padding: 25px;
+            border-radius: 14px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            color: var(--brand);
+            margin-top: 0;
+        }
+
+        .message {
+            margin-bottom: 15px;
+            padding: 10px 15px;
+            border-radius: 10px;
+        }
+
+        .user {
+            background: #e1f5fe;
+            border-left: 5px solid #03a9f4;
+        }
+
+        .assistant {
+            background: #f5f5f5;
+            border-left: 5px solid #9e9e9e;
+        }
+
+        .teacher-tools {
+            background: #fff3e0;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border: 1px solid #ffe0b2;
+        }
+
+        select {
+            padding: 8px;
+            border-radius: 5px;
+            width: 100%;
+            max-width: 300px;
+        }
+
+        .btn-back {
+            display: inline-block;
+            margin-top: 20px;
+            color: var(--brand);
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+            .btn-back:hover {
+                text-decoration: underline;
+            }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <a href="/" class="btn-back">← Terug naar dashboard</a>
+
+        <div class="card">
+            <h1>Gesprekslog: {{ target_user.username }}</h1>
+
+            {% if is_teacher %}
+            <div class="teacher-tools">
+                <label><strong>Bekijk andere student uit jouw klas:</strong></label><br>
+                <select onchange="if(this.value) { window.location.href='/chatbot/logs/'+this.value+'/'; }">
+                    <option value="">Selecteer een student...</option>
+                    {% for s in students_in_class %}
+                    {% if s.user %}
+                    <option value="{{ s.user.id }}" {% if s.user.id == target_user.id %}selected{% endif %}>
+                        {{ s.user.email }}
+                    </option>
+                    {% endif %}
+                    {% endfor %}
+                </select>
+            </div>
+            {% endif %}
+
+            {% if chat_log %}
+            <div class="conversation">
+                {% for message in chat_log.conversation %}
+                {% if message.role != 'system' %}
+                <div class="message {{ message.role }}">
+                    <strong>{{ message.role|title }}:</strong> {{ message.content }}
+                </div>
+                {% endif %}
+                {% endfor %}
+            </div>
+
+            <hr>
+            
+            {% else %}
+            <p>Geen afgerond gesprek gevonden voor deze gebruiker.</p>
+            {% endif %}
+        </div>
+    </div>
+
+</body>
+</html>

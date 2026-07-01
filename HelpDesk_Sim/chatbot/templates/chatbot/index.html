@@ -11,6 +11,7 @@
         .systeem { background: #fff3cd; font-style: italic; text-align: center; max-width: 100%; }
         #controls { display: flex; gap: 8px; }
         #question { flex: 1; padding: 8px; }
+        #endChatBtn { background: #f8d7da; }
     </style>
 </head>
 <body>
@@ -22,7 +23,10 @@
     <div id="controls">
         <input type="text" id="question" placeholder="Typ je reactie naar de klant...">
         <button onclick="sendQuestion()">Versturen</button>
+    </div>
+    <div id="controls" style="margin-top: 8px;">
         <button onclick="startNewChat()">Nieuw gesprek</button>
+        <button id="endChatBtn" onclick="endChat()">Gesprek beëindigen</button>
     </div>
 
     <script>
@@ -41,7 +45,9 @@
     function startNewChat() {
         // Begint een nieuw gesprek: leegt het scherm en vraagt de
         // server om een nieuw scenario te kiezen en de klant het
-        // probleem te laten uitleggen.
+        // probleem te laten uitleggen. Let op: dit gooit het lopende
+        // gesprek weg zonder het op te slaan (gebruik daarvoor de
+        // knop "Gesprek beëindigen").
         chatBox.innerHTML = "";
         addMessage("Nieuw gesprek wordt gestart...", "systeem");
 
@@ -68,6 +74,18 @@
             .then(res => res.json())
             .then(data => {
                 addMessage(data.answer, "klant");
+            });
+    }
+
+    function endChat() {
+        // Slaat het huidige gesprek op in de database (gekoppeld aan
+        // de ingelogde student) en sluit het gesprek af. Daarna kan
+        // de student met "Nieuw gesprek" weer een nieuw scenario starten.
+        fetch("end/")
+            .then(res => res.json())
+            .then(data => {
+                addMessage(data.message, "systeem");
+                document.getElementById("question").disabled = true;
             });
     }
 

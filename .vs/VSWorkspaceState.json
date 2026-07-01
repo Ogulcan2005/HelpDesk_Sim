@@ -1,0 +1,15 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\HelpDesk_Sim",
+    "\\HelpDesk_Sim\\accounts\\migrations",
+    "\\HelpDesk_Sim\\accounts\\templates",
+    "\\HelpDesk_Sim\\accounts\\__pycache__",
+    "\\HelpDesk_Sim\\chatbot",
+    "\\HelpDesk_Sim\\chatbot\\templates",
+    "\\HelpDesk_Sim\\config\\__pycache__",
+    "\\HelpDesk_Sim\\templates"
+  ],
+  "SelectedNode": "\\HelpDesk_Sim\\chatbot\\tests.py",
+  "PreviewInSolutionExplorer": false
+}
