@@ -27,6 +27,7 @@ class StudentInline(admin.TabularInline):
     """
     model = Student
     form = StudentInlineForm
+    fields = ('name', 'email', 'password')
     extra = 0
     can_delete = True
     verbose_name_plural = 'Studenten in deze klas'
@@ -39,6 +40,7 @@ class TeacherInline(admin.TabularInline):
     """
     model = Teacher
     form = TeacherInlineForm
+    fields = ('name', 'email', 'password')
     extra = 0
     can_delete = True
     verbose_name_plural = 'Docenten in deze klas'
