@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}HelpDesk{% endblock %}</title>
+
+    {# Styling gedeeld door wachtwoord-reset pagina's (en login/registratie) #}
+    <style>
+        :root {
+            --brand: #007d84;
+            --brand-dark: #00676d;
+            --bg: #eef2f6;
+            --text: #1f2933;
+            --muted: #5b6770;
+            --card: #ffffff;
+            --error-bg: #fde8e8;
+            --error-text: #b42318;
+            --success-bg: #e6f7f8;
+            --success-text: #00676d;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+        }
+
+        .topbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 56px;
+            background: var(--brand);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            padding: 0 18px;
+            font-weight: 700;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
+            z-index: 10;
+        }
+
+        .page-content {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 92px 20px 24px;
+        }
+
+        .auth-card {
+            width: 100%;
+            max-width: 420px;
+            background: var(--card);
+            border-radius: 12px;
+            padding: 32px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+        }
+
+        h1 {
+            margin: 0 0 8px;
+            font-size: 1.6rem;
+        }
+
+        .subtitle {
+            margin: 0 0 24px;
+            color: var(--muted);
+            line-height: 1.5;
+        }
+
+        .form-group {
+            margin-bottom: 16px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: 600;
+        }
+
+        input[type="email"],
+        input[type="password"],
+        input[type="text"] {
+            width: 100%;
+            padding: 12px 14px;
+            border: 1px solid #cbd5e0;
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: var(--brand);
+            box-shadow: 0 0 0 3px rgba(0, 125, 132, 0.15);
+        }
+
+        .errorlist {
+            margin: 0 0 8px;
+            padding: 0;
+            list-style: none;
+            color: var(--error-text);
+            font-size: 0.9rem;
+        }
+
+        .alert {
+            padding: 12px 14px;
+            border-radius: 8px;
+            margin-bottom: 16px;
+            line-height: 1.5;
+        }
+
+        .alert-error {
+            background: var(--error-bg);
+            color: var(--error-text);
+        }
+
+        /* Info-melding (bv. "link staat in terminal" bij wachtwoord reset) */
+        .alert-info {
+            background: var(--success-bg);
+            color: var(--success-text);
+        }
+
+        button[type="submit"] {
+            width: 100%;
+            padding: 12px 16px;
+            background: var(--brand);
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.15s ease;
+        }
+
+        button[type="submit"]:hover {
+            background: var(--brand-dark);
+        }
+
+        .back-link {
+            display: block;
+            margin-top: 16px;
+            text-align: center;
+            color: var(--brand);
+            text-decoration: none;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="topbar">
+        <span>HelpDesk</span>
+    </div>
+
+    {# Child templates (password_reset*.html) vullen {% block content %} #}
+    <div class="page-content">
+        <main class="auth-card">
+            {% block content %}{% endblock %}
+        </main>
+    </div>
+</body>
+</html>
